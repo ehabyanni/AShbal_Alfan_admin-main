@@ -1,0 +1,57 @@
+<!-- font awesome -->
+<!--online-->
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v6.1.2/css/all.css">
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v3.1.2/css/all.css">
+
+
+<div class="containerfluid" style="direction:rtl;">
+    <div class="container" style="background-color:white; padding: 10px; border-radius: 15px;">
+        <div class="col-12 col-sm-12 col-md-12">
+            <div class="row" style=" padding-top: 30px; padding-bottom: 30px;">
+                <div style="direction: ltr !important;">
+                </div>
+                <form [formGroup]="blogForm" method="post" id="formID">
+                    <div class="row" style=" padding-bottom: 20px;">
+                        <div class="col-12 col-sm-6 col-md-6">
+
+                            <!--title-->
+
+                            <div class="col-11">
+                                <label for="name" class="form-label">عنوان المقالة</label>
+                                <input type="text" id="titletext" class="form-control" placeholder="العنوان هنا"
+                                    formControlName="title" [class.is-invalid]="TITLE?.invalid && TITLE?.touched" value={{blog.title}}>
+                                <div *ngIf="TITLE?.errors && TITLE?.touched">
+                                    <small class="text-danger" *ngIf="TITLE?.errors?.['required']">يجب ادخال عنوان المقالة</small>
+                                    <small class="text-danger" *ngIf="TITLE?.errors?.['minlength']">يجب ان يحتوي
+                                        العنوان اكثر من 10 حروف</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--content-->
+
+                        <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
+                            <div class="col-11">
+                                <label for="content" class="form-label">محتوي المقالة</label>
+                                <textarea type="text" class="form-control" id="contenttext"
+                                    placeholder="أكتب محتوي مقالتك هنا" formControlName="content"
+                                    [class.is-invalid]="CONTENT?.invalid && CONTENT?.touched" value={{blog.content}}>
+                                </textarea>
+                                <div *ngIf="CONTENT?.errors && CONTENT?.touched">
+                                    <small class="text-danger" *ngIf="CONTENT?.errors?.['required']">يجب إدخال
+                                        نص المفالة</small>
+                                    <small class="text-danger" *ngIf="CONTENT?.errors?.['minlength']">يجب أن
+                                        يحتوي نص المقالة اكثر من 100 حرف</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" (click)="updateBlog()" class="btn btn-primary"
+                        [disabled]="TITLE?.invalid || CONTENT?.invalid">
+                        تعديل المدونة
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
