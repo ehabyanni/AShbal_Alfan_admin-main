@@ -30,7 +30,7 @@ export class BlogService {
   }
 
   EditItem(id:any , blog:any){
-    return this.http.patch<IBlog>(this._url,id,blog);
+    return this.http.patch<IBlog>(this._url+"/"+id,blog);
   }
 
 }

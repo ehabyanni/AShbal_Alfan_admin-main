@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { IBlog } from '../interfaces/Iblog';
 import { BlogService } from '../services/blog.service';
 
@@ -11,7 +12,7 @@ import { BlogService } from '../services/blog.service';
 })
 export class NewBlogComponent implements OnInit {
 
-  constructor(private formbuilder:FormBuilder,private itemsBlog:BlogService) { }
+  constructor(private formbuilder:FormBuilder,private itemsBlog:BlogService,private router:Router) { }
 
   blogForm = this.formbuilder.group({
     title: ['', [Validators.required, Validators.minLength(10)]],
@@ -36,10 +37,12 @@ export class NewBlogComponent implements OnInit {
    var  newBlog={
         title :this.TITLE.value,
         content : this.CONTENT.value,
-        image:"asdsaasdsad"
+        image:"asdsaasdsad",
+        creationDate: new Date()
       }
       console.log(newBlog);
       this.itemsBlog.AddItem(newBlog).subscribe();
+      this.router.navigate(['/blogs']);
     }  
   }
 
