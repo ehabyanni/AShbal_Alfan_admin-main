@@ -15,9 +15,37 @@
                         <div class="col-12 col-sm-6 col-md-6">
 
                             <div class="col-11">
-                                <label class="form-label" for="customFile">اختر صورة المقالة</label>
+                                <!-- <label class="form-label" for="customFile">اختر صورة المقالة</label>
                                 <input type="file" class="form-control" (change)="selectFileImage($event)" id="customFile" />
-                                <button class="btn btn-success" (click)="uploadingImage()">upload image</button>
+                                <button class="btn btn-success" (click)="uploadingImage()">upload image</button> -->
+                                <div class="row" style="margin-bottom: 15px">
+                                    <div class="col-md-3">
+                    
+                                      <input
+                                        type="file"
+                                        #file
+                                        placeholder="Choose file"
+                                        (change)="uploadFile(file.files)"
+                                        style="display: none"
+                                      />
+                                      <button
+                                        type="button"
+                                        class="btn btn-success"
+                                        (click)="file.click()"
+                                      >
+                                        Upload File
+                                      </button>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <span class="upload" *ngIf="progress > 0">
+                                        {{ progress }}%
+                                      </span>
+                                      <span class="upload" *ngIf="message">
+                                        {{ message }}
+                                        <br /><br />
+                                      </span>
+                                    </div>
+                                  </div>
                             </div>
 
                             <!--title-->
