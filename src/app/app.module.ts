@@ -9,6 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NewBlogComponent } from './new-blog/new-blog.component';
 import { EditBlogComponent } from './edit-blog/edit-blog.component';
 import { BlogsComponent } from './blogs/blogs.component';
+import { ProductsComponent } from './products/products.component';
+import { NewProductComponent } from './new-product/new-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { BlogsComponent } from './blogs/blogs.component';
     HomeComponent,
     NewBlogComponent,
     EditBlogComponent,
-    BlogsComponent
+    BlogsComponent,
+    ProductsComponent,
+    NewProductComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

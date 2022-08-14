@@ -1,0 +1,125 @@
+<!-- font awesome -->
+<!--online-->
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v6.1.2/css/all.css">
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v3.1.2/css/all.css">
+
+
+<div class="containerfluid" style="direction:rtl !important;">
+    <div class="container" style="background-color:white; padding: 10px; border-radius: 15px;">
+        <div class="col-12 col-sm-12 col-md-12">
+            <div class="row" style=" padding-top: 30px; padding-bottom: 30px;">
+
+                <form [formGroup]="productForm" method="post" id="formID">
+
+                    <!--1st row-->
+
+                    <div class="row" style=" padding-bottom: 10px;">
+                        <!--name-->
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="col-11">
+                                <label for="title" class="form-label">إسم المنتج</label>
+                                <input type="text" id="titletext" class="form-control" placeholder="الإسم هنا"
+                                    formControlName="title" [class.is-invalid]="TITLE?.invalid && TITLE?.touched" 
+                                    style="border-radius:0px ;" value={{product.title}} >
+                                <div *ngIf="TITLE?.errors && TITLE?.touched">
+                                    <small class="text-danger" *ngIf="TITLE?.errors?.['required']">يجب إدخال اسم
+                                        للمنتج</small>
+                                    <small class="text-danger" *ngIf="TITLE?.errors?.['minlength']">يجب ان يحتوي
+                                        الاسم اكثر من 5 حروف</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--category-->
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="col-11">
+                                <label for="category" class="form-label">نوع المنتج</label>
+                                <select formControlName="category" class="form-select" required
+                                    [class.is-invalid]="CATEGORY?.invalid && CATEGORY?.dirty"
+                                    style="border-radius: 0px;">
+                                    <option value={{product.categoryName}} selected>{{product.categoryName}}</option>
+                                    <option *ngFor="let cat of categories; let i =  index;" [value]="cat.title">
+                                        {{cat.title}}
+                                    </option>
+                                </select>
+                                <small class="text-danger" *ngIf="CATEGORY?.invalid && CATEGORY?.dirty">إختر نوع
+                                    المنتج</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--2nd row-->
+
+                    <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
+                        <!--minPrice-->
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="col-11">
+                                <label for="minPrice" class="form-label">أدني سعر :</label>
+                                <input type="number" class="form-control" id="minPricetext" placeholder="50 ر.س"
+                                    name="minPrice" formControlName="minPrice"
+                                    [class.is-invalid]="MINPRICE?.invalid && MINPRICE?.touched" 
+                                    value={{product.minPrice}} style="border-radius:0px ;">
+                                <div *ngIf="MINPRICE?.invalid && MINPRICE?.touched">
+                                    <small class="text-danger" *ngIf="MINPRICE?.invalid">يجب إدخال رقم هنا</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--maxPrice-->
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="col-10">
+                                <label for="maxPrice" class="form-label">أقصي سعر :</label>
+                                <input type="number" class="form-control" id="maxPricetext" 
+                                        placeholder="150 ر.س"  name="maxPrice"  formControlName="hint" 
+                                        [class.is-invalid]="MAXprice?.invalid && MAXprice?.touched" 
+                                        value={{product.maxPrice}} style="border-radius:0px ;">
+                                <div *ngIf="MAXprice?.invalid && MAXprice?.touched">
+                                        <small class="text-danger" *ngIf="MAXprice?.invalid">يجب إدخال رقم هنا</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--hint-->
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="col-10">
+                                <label for="hint" class="form-label">ملاحظة</label>
+                                <input type="text" class="form-control" id="hinttext" placeholder="أحصل ع تسعيرة مميزة..." name="hint"
+                                    formControlName="hint" [class.is-invalid]="HINT?.invalid && HINT?.touched" 
+                                    value={{product.hint}} style="border-radius:0px ;">
+                                <small class="text-danger" *ngIf="HINT?.invalid">النص اقصاه 30 حرف</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--3d row - description-->
+
+                    <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
+                        <div class="col-12">
+                            <label for="description" class="form-label">وصف المنتج</label>
+                            <textarea type="text" class="form-control" id="descriptiontext" placeholder="أترك الوصف هنا"
+                                formControlName="description"
+                                [class.is-invalid]="DESCRIPTION?.invalid && DESCRIPTION?.touched"
+                                style="min-height:70px;" value={{product.description}} style="height:100px; border-radius:0px ;">
+                                     </textarea>
+                            <div *ngIf="DESCRIPTION?.errors && DESCRIPTION?.touched">
+                                <small class="text-danger" *ngIf="DESCRIPTION?.errors?.['required']">يجب إدخال
+                                    وصف المنتج</small>
+                                <small class="text-danger" *ngIf="DESCRIPTION?.errors?.['minlength']">يجب أن
+                                    يحتوي وصف اللمنتج اكثر من 50 حرف</small>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="font-size: 14px; font-weight: 600; padding-top: 25px; color: gray;">الرجاء ملئ
+                        جميع البيانات </p>
+
+                    <button type="submit" class="btn btn-primary" (click)="updateProduct()"
+                            [disabled]="TITLE?.invalid || MAXprice?.invalid || MINPRICE?.invalid || HINT?.invalid || CATEGORY?.invalid || DESCRIPTION?.invalid" >
+                        إضافة المنتج
+                    </button>
+                    &nbsp;
+                    <a class="btn  text-danger" routerLink="/products">رجوع</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

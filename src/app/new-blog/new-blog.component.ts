@@ -1,3 +1,4 @@
+import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
@@ -12,7 +13,7 @@ import { BlogService } from '../services/blog.service';
 })
 export class NewBlogComponent implements OnInit {
 
-  constructor(private formbuilder:FormBuilder,private itemsBlog:BlogService,private router:Router) { }
+  constructor(private formbuilder:FormBuilder,private itemsBlog:BlogService,private router:Router , private http:HttpClient) { }
 
   blogForm = this.formbuilder.group({
     title: ['', [Validators.required, Validators.minLength(10)]],
@@ -46,4 +47,40 @@ export class NewBlogComponent implements OnInit {
     }  
   }
 
+  selectedFile!: File ;
+  selectFileImage(event:any){
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+  }
+
+  public urlFile = "http://localhost:4200/assets/images/";
+
+  progress!: number;
+  message!: string;
+  fileName!:any;
+
+  uploadFile = (files:any) => {
+    if (files.length === 0) {
+      return;
+    }
+
+    let fileToUpload = <File>files[0];
+    const formData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+    this.http.post('http://localhost:5216/api/Product/Upload', formData, {reportProgress: true, observe: 'events'})
+      .subscribe({
+        next: (event) => {
+        if (event.type === HttpEventType.UploadProgress)
+          this.progress = Math.round(100 * event.loaded / ((event.total)?event.total:1));
+        else if (event.type === HttpEventType.Response) {
+          if(event.body!=null)
+          this.fileName=event.body;
+          console.log(this.fileName)
+          
+          this.message = 'Upload success.';
+        }
+      },
+      error: (err: HttpErrorResponse) => console.log(err)
+    });
+  }
 }

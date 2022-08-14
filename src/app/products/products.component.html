@@ -6,24 +6,33 @@
 
 <div class="containerfluid" style="direction:rtl;">
     <div class="container" style="background-color:white; padding: 10px; border-radius: 15px;">
-        <a routerLink="/new-blog" type="button" class="btn btn-success">إضافة مدونة جديدة</a>
+        <a routerLink="/new-product" type="button" class="btn btn-success">إضافة منتج جديد</a>
         <br>
         <br>
-        <div class="scroooll" style="display:block; width: 100%; height: 510px; display: block; overflow: auto;">
+        <div class="scroooll" style=" width: 100%; height: 510px; display: block; overflow: auto;">
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">التاريخ</th>
-                        <th scope="col">العنوان</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
+                        <th scope="col">الصورة</th>
+                        <th scope="col">الاسم</th>
+                        <th scope="col">يبدأ من</th>
+                        <th scope="col"> إلي</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of blog">
-                        <td>{{item.creationDate|date:'fullDate'}}</td>
+                    <tr *ngFor="let item of products">
+                        <td><img [src]="item.image1" style="width: 40px; "></td>
                         <td>{{item.title}}</td>
-                        <td><button type="button" (click)="goToBlogEditor(item.id)" class="btn btn-primary">تعديل</button></td>
+                        <td>
+                            <h6 style="color: rgb(84, 209, 84); display: inline; font-weight: 600;">{{item.minPrice}}
+                            </h6> ر.س
+                        </td>
+                        <td>
+                            <h6 style="color: rgb(84, 209, 84); display: inline; font-weight: 600;">{{item.maxPrice}}
+                            </h6> ر.س
+                        </td>
+                        <td><button type="button" (click)="goToProductEditor(item.id)"
+                                class="btn btn-primary">تعديل</button></td>
                         <td>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
@@ -37,12 +46,12 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">هل متأكد من حذف هذه المقالة</h5>
+                                            <h5 class="modal-title" id="staticBackdropLabel">هل متأكد من حذف هذا المنتج</h5>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">تراجع</button>
-                                            <button type="button" class="btn btn-danger" (click)="DeleteThisBlog(item.id)">تأكيد الحذف</button>
+                                            <button type="button" class="btn btn-danger" (click)="DeleteThisProduct(item.id)">تأكيد الحذف</button>
                                         </div>
                                     </div>
                                 </div>
