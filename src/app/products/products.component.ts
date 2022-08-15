@@ -45,7 +45,7 @@ export class ProductsComponent implements OnInit {
 
   goToProductEditor(id: any) {
     //navigate to product editor
-    this.router.navigate(['/edit-product', id]);
+    this.router.navigate(['/home/edit-product', id]);
     console.log(id);
   }
   getCategoryName(id:string):any{

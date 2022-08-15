@@ -1,0 +1,74 @@
+* {
+    font-family: Tajawal;
+}
+
+.login-container {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.login-form-1 {
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-form-1 h3 {
+    text-align: center;
+    color: #333;
+}
+
+.login-form-2 {
+    padding: 2%;
+    // background:  #2e803e;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.login-form-2 h3 {
+    text-align: center;
+    color: #fff;
+}
+
+.login-container form {
+    padding: 10%;
+}
+
+.back {
+    background: url(/assets/images/billboard.jpg );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.btnSubmit {
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+
+.login-form-1 .btnSubmit {
+    font-weight: 600;
+    color: #fff;
+    background-color: #0E7E4A;
+    border: none;
+}
+
+.login-form-1 .btnSubmit:hover {
+    font-weight: 600;
+    color: #fff;
+    background-color: #10d479;
+}
+
+@media screen and(max-width:767px) {
+    .login-form-2 {
+        display: none;
+        opacity: 0;
+        box-shadow: none;
+    }
+
+    .login-form-1 {
+        box-shadow: none;
+    }
+}

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -99,7 +99,7 @@ export class EditProductComponent implements OnInit {
       }
       this.productservice.EditProduct(this.productId, oldProduct).subscribe(
         () => {
-          this.router.navigate(['/products']);
+          this.router.navigate(['/home/products']);
         }
       );
       console.log(oldProduct);
@@ -110,6 +110,35 @@ export class EditProductComponent implements OnInit {
   }
   isEqual(a:string,b:string):Boolean{
     return a==b;
+  }
+
+  progress!: number;
+  message!: string;
+  fileName!:any;
+
+  uploadFile = (files:any) => {
+    if (files.length === 0) {
+      return;
+    }
+
+    let fileToUpload = <File>files[0];
+    const formData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+    this.http.post('http://localhost:5216/api/Product/Upload', formData, {reportProgress: true, observe: 'events'})
+      .subscribe({
+        next: (event) => {
+        if (event.type === HttpEventType.UploadProgress)
+          this.progress = Math.round(100 * event.loaded / ((event.total)?event.total:1));
+        else if (event.type === HttpEventType.Response) {
+          if(event.body!=null)
+          this.fileName=event.body;
+          console.log(this.fileName)
+          
+          this.message = 'Upload success.';
+        }
+      },
+      error: (err: HttpErrorResponse) => console.log(err)
+    });
   }
 
 }

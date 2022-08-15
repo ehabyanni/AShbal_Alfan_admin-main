@@ -6,7 +6,7 @@
 
 <div class="containerfluid" style="direction:rtl;">
     <div class="container" style="background-color:white; padding: 10px; border-radius: 15px;">
-        <a routerLink="/new-blog" type="button" class="btn btn-success">إضافة مدونة جديدة</a>
+        <a routerLink="/home/new-blog" type="button" class="btn btn-success">إضافة مدونة جديدة</a>
         <br>
         <br>
         <div class="scroooll" style="display:block; width: 100%; height: 510px; display: block; overflow: auto;">
@@ -23,7 +23,8 @@
                 <tbody>
                     <tr *ngFor="let item of blog">
                         <td>{{item.creationDate|date:'fullDate'}}</td>
-                        <td><img src="assets/images/{{item.image}}" width="50px" alt="" srcset=""></td>
+                        <!-- <td><img src="assets/images/{{item.image}}" width="50px" alt="" srcset=""></td> -->
+                        <td><img src="assets/images/food.jpeg" width="40px"></td>
                         <td>{{item.title}}</td>
                         <td><button type="button" (click)="goToBlogEditor(item.id)" class="btn btn-primary">تعديل</button></td>
                         <td>

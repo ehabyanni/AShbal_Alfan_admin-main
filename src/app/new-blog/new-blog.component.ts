@@ -44,7 +44,7 @@ export class NewBlogComponent implements OnInit {
       console.log(newBlog);
       this.itemsBlog.AddItem(newBlog).subscribe(
         ()=>{
-          this.router.navigate(['/blogs']);
+          this.router.navigate(['/home/blogs']);
         }
       );
     }  

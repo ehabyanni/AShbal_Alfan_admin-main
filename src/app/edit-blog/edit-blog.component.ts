@@ -61,7 +61,7 @@ export class EditBlogComponent implements OnInit {
 
       this.itemsBlog.EditItem(this.blogId,newBlog).subscribe(
         ()=>{
-          this.router.navigate(['/blogs']);
+          this.router.navigate(['/home/blogs']);
         }
       );
     }

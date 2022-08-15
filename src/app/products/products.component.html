@@ -6,7 +6,7 @@
 
 <div class="containerfluid" style="direction:rtl;">
     <div class="container" style="background-color:white; padding: 10px; border-radius: 15px;">
-        <a routerLink="/new-product" type="button" class="btn btn-success">إضافة منتج جديد</a>
+        <a routerLink="/home/new-product" type="button" class="btn btn-success">إضافة منتج جديد</a>
         <br>
         <br>
         <div class="scroooll" style=" width: 100%; height: 510px; display: block; overflow: auto;">
@@ -22,7 +22,8 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of products">
-                        <td><img src="assets/images/{{item.image1}}" style="width: 40px; "></td>
+                        <!-- <td><img src="assets/images/{{item.image1}}" style="width: 40px; "></td> -->
+                        <td><img src="assets/images/letterheads.jpg" width="40px"></td>
                         <td>{{getCategoryName(item.category_Id)}}</td>
                         <td>{{item.title}}</td>
                         <td>

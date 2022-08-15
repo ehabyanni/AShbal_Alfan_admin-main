@@ -6,88 +6,87 @@
 
 <div class="containerfluid" style="direction:rtl;">
     <div class="container" style="background-color:white; padding: 10px; border-radius: 15px;">
-        <div class="col-12 col-sm-12 col-md-12">
-            <div class="row" style=" padding-top: 30px; padding-bottom: 30px;">
-                <div style="direction: ltr !important;">
-                </div>
-                <form [formGroup]="blogForm" method="post" id="formID" enctype="multipart/form-data">
-                    <div class="row" style=" padding-bottom: 20px;">
-                        <div class="col-12 col-sm-6 col-md-6">
+        <div class="scroooll" style="width: 100%; height: 575px; overflow-y: scroll;">
+            <div class="col-11 col-sm-11 col-md-11">
+                <div class="row" style=" padding-top: 30px; padding-bottom: 30px;">
+                    <form [formGroup]="blogForm" method="post" id="formID" enctype="multipart/form-data">
+                        <div class="row" style=" padding-bottom: 20px;">
+                            <div class="row col-12 col-sm-12 col-md-12">
 
-                            <div class="col-11">
+                                <!-- <div class="col-6"> -->
                                 <!-- <label class="form-label" for="customFile">اختر صورة المقالة</label>
                                 <input type="file" class="form-control" (change)="selectFileImage($event)" id="customFile" />
                                 <button class="btn btn-success" (click)="uploadingImage()">upload image</button> -->
-                                <div class="row" style="margin-bottom: 15px">
+                                <!-- <div class="row" style="margin-bottom: 15px">
                                     <div class="col-md-3">
                     
-                                      <input
-                                        type="file"
-                                        #file
-                                        placeholder="Choose file"
-                                        (change)="uploadFile(file.files)"
-                                        style="display: none"
-                                      />
-                                      <button
-                                        type="button"
-                                        class="btn btn-success"
-                                        (click)="file.click()"
-                                      >
-                                        Upload File
-                                      </button>
+                                      <input  type="file"  #file  placeholder="Choose file" (change)="uploadFile(file.files)"  style="display: none" />
+                                      <button type="button" class="btn btn-success" (click)="file.click()"> Upload File </button>
                                     </div>
                                     <div class="col-md-4">
-                                      <span class="upload" *ngIf="progress > 0">
-                                        {{ progress }}%
-                                      </span>
-                                      <span class="upload" *ngIf="message">
-                                        {{ message }}
-                                        <br /><br />
-                                      </span>
+                                      <span class="upload" *ngIf="progress > 0"> {{ progress }}% </span>
+                                      <span class="upload" *ngIf="message">  {{ message }} </span>
                                     </div>
                                   </div>
-                            </div>
+                            </div> -->
 
-                            <!--title-->
+                                <!--title-->
 
-                            <div class="col-11">
-                                <label for="name" class="form-label">عنوان المقالة</label>
-                                <input type="text" id="titletext" class="form-control" placeholder="العنوان هنا"
-                                    formControlName="title" [class.is-invalid]="TITLE?.invalid && TITLE?.touched">
-                                <div *ngIf="TITLE?.errors && TITLE?.touched">
-                                    <small class="text-danger" *ngIf="TITLE?.errors?.['required']">يجب ادخال عنوان
-                                        المقالة</small>
-                                    <small class="text-danger" *ngIf="TITLE?.errors?.['minlength']">يجب ان يحتوي
-                                        العنوان اكثر من 10 حروف</small>
+                                <div class="col-5">
+                                    <label for="name" class="form-label">عنوان المقالة</label>
+                                    <input type="text" id="titletext" class="form-control" placeholder="العنوان هنا"
+                                        formControlName="title" [class.is-invalid]="TITLE?.invalid && TITLE?.touched">
+                                    <div *ngIf="TITLE?.errors && TITLE?.touched">
+                                        <small class="text-danger" *ngIf="TITLE?.errors?.['required']">يجب ادخال عنوان
+                                            المقالة</small>
+                                        <small class="text-danger" *ngIf="TITLE?.errors?.['minlength']">يجب ان يحتوي
+                                            العنوان اكثر من 10 حروف</small>
+                                    </div>
+                                </div>
+
+                                <!--upload image-->
+                                <div class="row col-6">
+
+                                    <div class="col-8">
+                                        <label for="name" class="form-label">تعديل صورة للمقالة</label>
+                                        <input class="form-control" style="border-radius: 0px;" type="file"
+                                            id="formFile" #file (change)="uploadFile(file.files)">
+                                        <!-- <input type="file" style=" padding-top:3px" class="btn btn-succes"  #file placeholder="اختر الصورة" (change)="uploadFile(file.files)" /> -->
+                                        <!-- <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button> -->
+                                    </div>
+                                    <div class="col-3">
+                                        <img src="assets/images/food.jpeg" width="100px">
+                                        <!-- <img src="assets/images/{{blog.image}}" width="50px" alt="" srcset=""> -->
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!--content-->
+                            <!--content-->
 
-                        <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
-                            <div class="col-11">
-                                <label for="content" class="form-label">محتوي المقالة</label>
-                                <textarea type="text" class="form-control" id="contenttext"
-                                    placeholder="أكتب محتوي مقالتك هنا" formControlName="content"
-                                    [class.is-invalid]="CONTENT?.invalid && CONTENT?.touched">
+                            <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
+                                <div class="col-11">
+                                    <label for="content" class="form-label">محتوي المقالة</label>
+                                    <textarea type="text" class="form-control" id="contenttext"
+                                        placeholder="أكتب محتوي مقالتك هنا" formControlName="content"
+                                        [class.is-invalid]="CONTENT?.invalid && CONTENT?.touched">
                                 </textarea>
-                                <div *ngIf="CONTENT?.errors && CONTENT?.touched">
-                                    <small class="text-danger" *ngIf="CONTENT?.errors?.['required']">يجب إدخال
-                                        نص المفالة</small>
-                                    <small class="text-danger" *ngIf="CONTENT?.errors?.['minlength']">يجب أن
-                                        يحتوي نص المقالة اكثر من 100 حرف</small>
+                                    <div *ngIf="CONTENT?.errors && CONTENT?.touched">
+                                        <small class="text-danger" *ngIf="CONTENT?.errors?.['required']">يجب إدخال
+                                            نص المفالة</small>
+                                        <small class="text-danger" *ngIf="CONTENT?.errors?.['minlength']">يجب أن
+                                            يحتوي نص المقالة اكثر من 100 حرف</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <button type="submit" (click)="addBlog()" class="btn btn-primary"
-                        [disabled]="TITLE?.invalid || CONTENT?.invalid">
-                        إضافة المدونة
-                    </button>
-                    &nbsp;
-                    <a class="btn  text-danger" routerLink="/blogs">رجوع</a>
-                </form>
+                        <button type="submit" (click)="addBlog()" class="btn btn-primary"
+                            [disabled]="TITLE?.invalid || CONTENT?.invalid">
+                            إضافة المدونة
+                        </button>
+                        &nbsp;
+                        <a class="btn  text-danger" routerLink="/home/blogs">رجوع</a>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

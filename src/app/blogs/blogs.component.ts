@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IBlog } from '../interfaces/Iblog';
 import { BlogService } from '../services/blog.service';
 
@@ -10,7 +10,7 @@ import { BlogService } from '../services/blog.service';
 })
 export class BlogsComponent implements OnInit {
 
-  constructor(private itemsBlog: BlogService, private router: Router) { }
+  constructor(private itemsBlog: BlogService, private router: Router , private activeroute:ActivatedRoute) { }
 
   blog: IBlog[] = []
 
@@ -33,9 +33,10 @@ export class BlogsComponent implements OnInit {
 
   goToBlogEditor(id: any) {
     //navigate to blog editor
-    this.router.navigate(['/edit-blog', id]);
+    this.router.navigate(['/home/edit-blog', id]);
     console.log(id);
   }
+
 }
 
 

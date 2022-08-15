@@ -12,6 +12,7 @@ import { BlogsComponent } from './blogs/blogs.component';
 import { ProductsComponent } from './products/products.component';
 import { NewProductComponent } from './new-product/new-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     BlogsComponent,
     ProductsComponent,
     NewProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
