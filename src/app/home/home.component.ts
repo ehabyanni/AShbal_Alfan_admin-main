@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TokenService } from '../services/token.service';
 
 
 @Component({
@@ -9,8 +10,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router:Router , private activeroute:ActivatedRoute) { }
+  constructor(private router:Router , private activeroute:ActivatedRoute , private tokenservice:TokenService) { }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+this.tokenservice.signOut();
+this.router.navigate(['login']);
   }
 }

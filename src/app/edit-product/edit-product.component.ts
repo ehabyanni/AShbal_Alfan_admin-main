@@ -85,11 +85,11 @@ export class EditProductComponent implements OnInit {
       var oldProduct = {
         title: this.TITLE.value,
         description: this.DESCRIPTION.value,
-        image1: "6ee5fa81-be9c-4d0c-a48a-3d0db669c878.webp",
-        image2: "asdsaasdsad",
-        image3: "asdsaasdsad",
-        image4: "asdsaasdsad",
-        image5: "asdsaasdsad",
+        image1: this.fileName1?this.fileName1.fileName:this.product.image1,
+        image2: this.fileName2?this.fileName2.fileName:this.product.image2,
+        image3: this.fileName3?this.fileName3.fileName:this.product.image3,
+        image4: this.fileName4?this.fileName4.fileName:this.product.image4,
+        image5: "aaaaaaaa",
         sku: "QI159",
         creationDate: new Date(),
         category_Id: this.CATEGORY?.value,
@@ -111,12 +111,14 @@ export class EditProductComponent implements OnInit {
   isEqual(a:string,b:string):Boolean{
     return a==b;
   }
-
   progress!: number;
   message!: string;
-  fileName!:any;
+  fileName1!:any;
+  fileName2!:any;
+  fileName3!:any;
+  fileName4!:any;
 
-  uploadFile = (files:any) => {
+  uploadFile = (files:any,imageNumber:number) => {
     if (files.length === 0) {
       return;
     }
@@ -131,8 +133,30 @@ export class EditProductComponent implements OnInit {
           this.progress = Math.round(100 * event.loaded / ((event.total)?event.total:1));
         else if (event.type === HttpEventType.Response) {
           if(event.body!=null)
-          this.fileName=event.body;
-          console.log(this.fileName)
+          console.log(imageNumber);
+          switch(imageNumber){
+            case 1:
+              this.fileName1=event.body;
+              break;
+
+            case 2:
+              this.fileName2=event.body;
+              break;
+            case 3:
+              this.fileName3=event.body;
+              break;
+            
+            case 4:
+              this.fileName4=event.body;
+              break;
+            
+          //   default: {
+          //     statements; 
+          //     this.fileName4=event.body;
+
+          //     break; 
+          //  } 
+          }
           
           this.message = 'Upload success.';
         }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { TokenService } from '../services/token.service';
 
 @Component({
   selector: 'app-login-page',
@@ -10,7 +12,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LoginPageComponent implements OnInit {
 
   
-  constructor(private fornmbuilder: FormBuilder , private router:Router , private activeroute:ActivatedRoute) { }
+  constructor(private fornmbuilder: FormBuilder ,
+     private router:Router,private authService:AuthService,
+     private tokenStorage: TokenService) { }
 
   loginForm = this.fornmbuilder.group({
     username: ['', [Validators.required, Validators.minLength(6)]],
@@ -29,16 +33,32 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.tokenStorage.getToken()!=null){
+      this.isLoggedIn = true;
+    }
+    if(this.isLoggedIn){
+      this.router.navigate(['home']);
+
+    }
   }
+  isLoggedIn = false;
+  errorMessage = '';
 
   sumbitUsername(){
     if (this.USERNAME != null && this.PASS != null) {
-      var user = {
-        title: this.USERNAME.value,
-        description: this.PASS.value,
-      }
-      console.log(user);
-      this.router.navigate(['home']);
+      this.authService.login(this.USERNAME.value,this.PASS.value).subscribe(
+        data => {
+          this.tokenStorage.saveToken(data.token);
+          this.isLoggedIn = true;
+          this.router.navigate(['home']);
+        },
+        err => {
+          this.errorMessage = "خطأ في اسم المستخدم او كلمة سر";
+        }
+  
+      );
+      
+      
     }
   }
 

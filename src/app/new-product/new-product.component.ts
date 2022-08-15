@@ -73,11 +73,11 @@ export class NewProductComponent implements OnInit {
       var newProduct = {
         title: this.TITLE.value,
         description: this.DESCRIPTION.value,
-        image1: "6ee5fa81-be9c-4d0c-a48a-3d0db669c878.webp",
-        image2: "asdsaasdsad",
-        image3: "asdsaasdsad",
-        image4: "asdsaasdsad",
-        image5: "asdsaasdsad",
+        image1: this.fileName1.fileName,
+        image2: this.fileName2.fileName,
+        image3: this.fileName3.fileName,
+        image4: this.fileName4.fileName,
+        image5: this.fileName4.fileName,
         sku: "QI159",
         creationDate: new Date(),
         category_Id: this.CATEGORY?.value,
@@ -107,9 +107,12 @@ export class NewProductComponent implements OnInit {
 
   progress!: number;
   message!: string;
-  fileName!:any;
+  fileName1!:any;
+  fileName2!:any;
+  fileName3!:any;
+  fileName4!:any;
 
-  uploadFile = (files:any) => {
+  uploadFile = (files:any,imageNumber:number) => {
     if (files.length === 0) {
       return;
     }
@@ -124,8 +127,30 @@ export class NewProductComponent implements OnInit {
           this.progress = Math.round(100 * event.loaded / ((event.total)?event.total:1));
         else if (event.type === HttpEventType.Response) {
           if(event.body!=null)
-          this.fileName=event.body;
-          console.log(this.fileName)
+          console.log(imageNumber);
+          switch(imageNumber){
+            case 1:
+              this.fileName1=event.body;
+              break;
+
+            case 2:
+              this.fileName2=event.body;
+              break;
+            case 3:
+              this.fileName3=event.body;
+              break;
+            
+            case 4:
+              this.fileName4=event.body;
+              break;
+            
+          //   default: {
+          //     statements; 
+          //     this.fileName4=event.body;
+
+          //     break; 
+          //  } 
+          }
           
           this.message = 'Upload success.';
         }

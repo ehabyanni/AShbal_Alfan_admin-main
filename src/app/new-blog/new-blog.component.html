@@ -55,8 +55,8 @@
                                         <!-- <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button> -->
                                     </div>
                                     <div class="col-3">
-                                        <img src="assets/images/food.jpeg" width="100px">
-                                        <!-- <img src="assets/images/{{blog.image}}" width="50px" alt="" srcset=""> -->
+                                        <!-- <img src="assets/images/food.jpeg" width="100px"> -->
+                                        <img *ngIf="fileName.fileName" src="assets/images/{{fileName.fileName}}" width="100px" alt="" srcset="">
                                     </div>
                                 </div>
                             </div>

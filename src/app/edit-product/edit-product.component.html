@@ -123,15 +123,16 @@
                                 <div class="col-11">
                                     <label class="form-label">إضافة صورة 1</label>
                                     <input class="form-control" style="border-radius: 0px;" aria-placeholder="ggg"
-                                        type="file" id="formFile" #file (change)="uploadFile(file.files)">
+                                    type="file" id="formFile" #file1 (change)="uploadFile(file1.files,1)">
                                     <!-- <input type="file" style=" padding-top:3px" class="btn btn-succes"  #file placeholder="اختر الصورة" (change)="uploadFile(file.files)" /> -->
                                     <!-- <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button> -->
                                 </div>
 
                                 <div class="col-12" style=" padding-top: 10px;">
-                                    <img src="assets/images/food.jpeg" width="100px" height="100px"
-                                        style="display: block; margin:auto;">
-                                    <!-- <img src="assets/images/{{blog.image}}" width="50px" alt="" srcset=""> -->
+                                    <!-- <img src="assets/images/food.jpeg" width="100px" height="100px"
+                                        style="display: block; margin:auto;"> -->
+                                        <img src="assets/images/{{fileName1?fileName1.fileName:product.image1}}" width="100px" height="100px"
+                                        style="display: block; margin:auto;" alt="" srcset="">                  
                                 </div>
                             </div>
 
@@ -141,16 +142,16 @@
                                 <div class="col-11">
                                     <label class="form-label">إضافة صورة 2</label>
                                     <input class="form-control" style="border-radius: 0px;" aria-placeholder="ggg"
-                                        type="file" id="formFile" #file (change)="uploadFile(file.files)">
+                                        type="file" id="formFile" #file2 (change)="uploadFile(file2.files,2)">
                                     <!-- <input type="file" style=" padding-top:3px" class="btn btn-succes"  #file placeholder="اختر الصورة" (change)="uploadFile(file.files)" /> -->
                                     <!-- <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button> -->
                                 </div>
 
                                 <div class="col-12" style=" padding-top: 10px;">
-                                    <img src="assets/images/food.jpeg" width="100px" height="100px"
-                                        style="display: block; margin:auto;">
-                                    <!-- <img src="assets/images/{{blog.image}}" width="50px" alt="" srcset=""> -->
-                                </div>
+                                    <!-- <img src="assets/images/food.jpeg" width="100px" height="100px"
+                                        style="display: block; margin:auto;"> -->
+                                        <img src="assets/images/{{fileName2?fileName2.fileName:product.image2}}" width="100px" height="100px"
+                                        style="display: block; margin:auto;" alt="" srcset="">                                </div>
                             </div>
 
                             <!--upload image 3 -->
@@ -159,15 +160,16 @@
                                 <div class="col-11">
                                     <label class="form-label">إضافة صورة 3</label> <input class="form-control"
                                         style="border-radius: 0px;" aria-placeholder="ggg" type="file" id="formFile"
-                                        #file (change)="uploadFile(file.files)">
+                                        #file3 (change)="uploadFile(file3.files,3)">
                                     <!-- <input type="file" style=" padding-top:3px" class="btn btn-succes"  #file placeholder="اختر الصورة" (change)="uploadFile(file.files)" /> -->
                                     <!-- <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button> -->
                                 </div>
 
                                 <div class="col-12" style=" padding-top: 10px;">
-                                    <img src="assets/images/food.jpeg" width="100px" height="100px"
-                                        style="display: block; margin:auto;">
-                                    <!-- <img src="assets/images/{{blog.image}}" width="50px" alt="" srcset=""> -->
+                                    <!-- <img src="assets/images/food.jpeg" width="100px" height="100px"
+                                        style="display: block; margin:auto;"> -->
+                                    <img src="assets/images/{{fileName3?fileName3.fileName:product.image3}}" width="100px" height="100px"
+                                    style="display: block; margin:auto;" alt="" srcset="">
                                 </div>
                             </div>
 
@@ -177,15 +179,17 @@
                                 <div class="col-11">
                                     <label class="form-label">إضافة صورة 4</label> <input class="form-control"
                                         style="border-radius: 0px;" aria-placeholder="ggg" type="file" id="formFile"
-                                        #file (change)="uploadFile(file.files)">
+                                        #file4 (change)="uploadFile(file4.files,4)">
                                     <!-- <input type="file" style=" padding-top:3px" class="btn btn-succes"  #file placeholder="اختر الصورة" (change)="uploadFile(file.files)" /> -->
                                     <!-- <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button> -->
                                 </div>
 
                                 <div class="col-12" style=" padding-top: 10px;">
-                                    <img src="assets/images/food.jpeg" width="100px" height="100px"
-                                        style="display: block; margin:auto;">
-                                    <!-- <img src="assets/images/{{blog.image}}" width="50px" alt="" srcset=""> -->
+                                    <!-- <img src="assets/images/food.jpeg" width="100px" height="100px"
+                                        style="display: block; margin:auto;"> -->
+                                        <img src="assets/images/{{fileName4?fileName4.fileName:product.image4}}" width="100px" height="100px"
+                                        style="display: block; margin:auto;" alt="" srcset="">
+                                    
                                 </div>
                             </div>
                         </div>

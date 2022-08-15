@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICategory } from '../interfaces/Icategory';
+import { IProduct } from '../interfaces/Iproduct';
 import { CategoriesService } from '../services/categories.service';
 import { ProductsService } from '../services/products.service';
 
@@ -15,7 +16,7 @@ export class ProductsComponent implements OnInit {
     private categservice:CategoriesService,
      private router:Router) { }
 
-  products: any = [];
+  products: IProduct[] = [];
   categories:ICategory[]=[];
   ngOnInit(): void {
     //Fill Products
@@ -37,7 +38,7 @@ export class ProductsComponent implements OnInit {
   DeleteThisProduct(id: any) {
     this.productservice.DeleteProduct(id).subscribe(
       () => {
-        this.ngOnInit();
+        this.products.splice(this.products.findIndex(p=>p.id==id),1);
       }
     );
     console.log(id + "deleted");
