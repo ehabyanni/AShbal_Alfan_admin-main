@@ -10,8 +10,8 @@ export class BlogService {
 
   constructor(private http:HttpClient) { }
 
-  //public _url = "http://localhost:5216/api/Blog"
-  public _url= "/assets/data/blogitems.json"
+  public _url = "http://localhost:5216/api/Blog"
+  //public _url= "/assets/data/blogitems.json"
   blog:any = [];
 
   //all blog items
@@ -21,7 +21,7 @@ export class BlogService {
   }
 
   //delete a blog (item)
-  DeleteItem(blogid:string){
+  DeleteItem(blogid:string):Observable<any>{
     return this.http.delete(this._url+"/"+blogid);
   }
 

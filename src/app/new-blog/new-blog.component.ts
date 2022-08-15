@@ -38,12 +38,15 @@ export class NewBlogComponent implements OnInit {
    var  newBlog={
         title :this.TITLE.value,
         content : this.CONTENT.value,
-        image:"asdsaasdsad",
+        image:this.fileName.fileName,
         creationDate: new Date()
       }
       console.log(newBlog);
-      this.itemsBlog.AddItem(newBlog).subscribe();
-      this.router.navigate(['/blogs']);
+      this.itemsBlog.AddItem(newBlog).subscribe(
+        ()=>{
+          this.router.navigate(['/blogs']);
+        }
+      );
     }  
   }
 

@@ -37,9 +37,9 @@
                                 <select formControlName="category" class="form-select" required
                                     [class.is-invalid]="CATEGORY?.invalid && CATEGORY?.dirty"
                                     style="border-radius: 0px;">
-                                    <option value={{product.categoryName}} selected>{{product.categoryName}}</option>
-                                    <option *ngFor="let cat of categories; let i =  index;" [value]="cat.title">
-                                        {{cat.title}}
+                                    <option value="1" selected style="background-color: rgb(206, 206, 206); color:silver;">{{getCategoryName(product.category_Id)}}</option>
+                                    <option *ngFor="let cat of categories" [value]="cat.id">
+                                        {{cat.name}}
                                     </option>
                                 </select>
                                 <small class="text-danger" *ngIf="CATEGORY?.invalid && CATEGORY?.dirty">إختر نوع
@@ -70,7 +70,7 @@
                             <div class="col-10">
                                 <label for="maxPrice" class="form-label">أقصي سعر :</label>
                                 <input type="number" class="form-control" id="maxPricetext" 
-                                        placeholder="150 ر.س"  name="maxPrice"  formControlName="hint" 
+                                        placeholder="150 ر.س"  name="maxPrice"  formControlName="maxPrice" 
                                         [class.is-invalid]="MAXprice?.invalid && MAXprice?.touched" 
                                         value={{product.maxPrice}} style="border-radius:0px ;">
                                 <div *ngIf="MAXprice?.invalid && MAXprice?.touched">

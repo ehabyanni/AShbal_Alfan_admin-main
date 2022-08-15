@@ -63,6 +63,7 @@ export class NewProductComponent implements OnInit {
     this.categservice.GetAllCategories().subscribe(
       data => {
         this.categories = data;
+        console.log(this.categories);
       }
     )
   }
@@ -72,9 +73,14 @@ export class NewProductComponent implements OnInit {
       var newProduct = {
         title: this.TITLE.value,
         description: this.DESCRIPTION.value,
-        image: "asdsaasdsad",
+        image1: "6ee5fa81-be9c-4d0c-a48a-3d0db669c878.webp",
+        image2: "asdsaasdsad",
+        image3: "asdsaasdsad",
+        image4: "asdsaasdsad",
+        image5: "asdsaasdsad",
+        sku: "QI159",
         creationDate: new Date(),
-        category: this.CATEGORY?.value,
+        category_Id: this.CATEGORY?.value,
         minPrice: this.MINPRICE?.value,
         maxPrice: this.MAXprice?.value,
         hint: this.HINT?.value

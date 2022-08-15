@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IBlog } from '../interfaces/Iblog';
 import { BlogService } from '../services/blog.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class BlogsComponent implements OnInit {
 
   constructor(private itemsBlog: BlogService, private router: Router) { }
 
-  blog: any = []
+  blog: IBlog[] = []
 
   ngOnInit(): void {
     this.itemsBlog.GetAllItems().subscribe(
@@ -24,7 +25,7 @@ export class BlogsComponent implements OnInit {
   DeleteThisBlog(id: any) {
     this.itemsBlog.DeleteItem(id).subscribe(
       () => {
-        this.ngOnInit();
+        this.blog.splice(this.blog.findIndex(b=>b.id==id),1);
       }
     );
     console.log(id + "deleted");

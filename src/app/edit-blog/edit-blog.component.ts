@@ -1,3 +1,4 @@
+import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,7 +14,8 @@ export class EditBlogComponent implements OnInit {
   constructor(private formbuilder: FormBuilder,
      private itemsBlog: BlogService ,
       private activeroute:ActivatedRoute ,
-      private router:Router
+      private router:Router,
+      private http:HttpClient
       ) { }
 
   blogForm = this.formbuilder.group({
@@ -32,6 +34,7 @@ export class EditBlogComponent implements OnInit {
   }
 
   blogId:any;
+  oldImageName:any;
   blog:any = {};
 
   ngOnInit(): void {
@@ -47,15 +50,50 @@ export class EditBlogComponent implements OnInit {
 
   updateBlog() {
     if (this.TITLE != null && this.CONTENT != null) {
-      var oldBlog = {
+      var newBlog = {
         title: this.TITLE.value,
         content: this.CONTENT.value,
-        image: "asdsaasdsad",
+        image: this.fileName?this.fileName.fileName:this.blog.image,
         creationDate:new Date()
       }
+      console.log(newBlog);
+      console.log(this.oldImageName);
 
-      this.itemsBlog.EditItem(this.blogId,oldBlog).subscribe();
-      this.router.navigate(['/blogs']);
+      this.itemsBlog.EditItem(this.blogId,newBlog).subscribe(
+        ()=>{
+          this.router.navigate(['/blogs']);
+        }
+      );
     }
+
+  }
+  
+  progress!: number;
+  message!: string;
+  fileName!:any;
+
+  uploadFile = (files:any) => {
+    if (files.length === 0) {
+      return;
+    }
+
+    let fileToUpload = <File>files[0];
+    const formData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+    this.http.post('http://localhost:5216/api/Product/Upload', formData, {reportProgress: true, observe: 'events'})
+      .subscribe({
+        next: (event) => {
+        if (event.type === HttpEventType.UploadProgress)
+          this.progress = Math.round(100 * event.loaded / ((event.total)?event.total:1));
+        else if (event.type === HttpEventType.Response) {
+          if(event.body!=null)
+          this.fileName=event.body;
+          console.log(this.fileName)
+          
+          this.message = 'Upload success.';
+        }
+      },
+      error: (err: HttpErrorResponse) => console.log(err)
+    });
   }
 }

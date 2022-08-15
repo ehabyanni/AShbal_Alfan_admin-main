@@ -5,7 +5,7 @@ export interface IProduct{
     image3:string;
     image4:string;
     image5:string;
-    categoryName:string;
+    category_Id:string;
     title:string;
     minPrice:number;
     maxPrice:number;

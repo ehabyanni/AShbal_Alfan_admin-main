@@ -10,7 +10,7 @@ export class ProductsService {
 
   constructor(private http:HttpClient) { }
 
-  public _url= "/assets/data/products.json"
+  public _url=  "http://localhost:5216/api/product"
   products:any = [];
 
   //all products
@@ -20,16 +20,16 @@ export class ProductsService {
   }
 
   //delete a blog (item)
-  DeleteProduct(blogid:string){
-    return this.http.delete(this._url+"/"+blogid);
+  DeleteProduct(productId:string){
+    return this.http.delete(this._url+"/"+productId);
   }
 
-  AddProduct(blog:any){
-    return this.http.post<IProduct>(this._url,blog);
+  AddProduct(product:any){
+    return this.http.post<IProduct>(this._url,product);
   }
 
-  EditProduct(id:any , blog:any){
-    return this.http.patch<IProduct>(this._url+"/"+id,blog);
+  EditProduct(id:any , product:any){
+    return this.http.patch<IProduct>(this._url+"/"+id,product);
   }
 
 }

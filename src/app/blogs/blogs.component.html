@@ -14,6 +14,7 @@
                 <thead>
                     <tr>
                         <th scope="col">التاريخ</th>
+                        <th>الصورة</th>
                         <th scope="col">العنوان</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
@@ -22,6 +23,7 @@
                 <tbody>
                     <tr *ngFor="let item of blog">
                         <td>{{item.creationDate|date:'fullDate'}}</td>
+                        <td><img src="assets/images/{{item.image}}" width="50px" alt="" srcset=""></td>
                         <td>{{item.title}}</td>
                         <td><button type="button" (click)="goToBlogEditor(item.id)" class="btn btn-primary">تعديل</button></td>
                         <td>
@@ -42,7 +44,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">تراجع</button>
-                                            <button type="button" class="btn btn-danger" (click)="DeleteThisBlog(item.id)">تأكيد الحذف</button>
+                                            <button type="button"  class="btn btn-danger" (click)="DeleteThisBlog(item.id)" data-bs-dismiss="modal">تأكيد الحذف</button>
                                         </div>
                                     </div>
                                 </div>

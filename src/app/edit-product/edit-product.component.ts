@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ICategory } from '../interfaces/Icategory';
 import { CategoriesService } from '../services/categories.service';
 import { ProductsService } from '../services/products.service';
 
@@ -60,7 +61,7 @@ export class EditProductComponent implements OnInit {
   }
 
 
-  categories: any = [];
+  categories: ICategory[] = [];
   product: any = {};
   productId: any = "";
 
@@ -84,20 +85,31 @@ export class EditProductComponent implements OnInit {
       var oldProduct = {
         title: this.TITLE.value,
         description: this.DESCRIPTION.value,
-        image: "asdsaasdsad",
+        image1: "6ee5fa81-be9c-4d0c-a48a-3d0db669c878.webp",
+        image2: "asdsaasdsad",
+        image3: "asdsaasdsad",
+        image4: "asdsaasdsad",
+        image5: "asdsaasdsad",
+        sku: "QI159",
         creationDate: new Date(),
-        category: this.CATEGORY?.value,
+        category_Id: this.CATEGORY?.value,
         minPrice: this.MINPRICE?.value,
         maxPrice: this.MAXprice?.value,
         hint: this.HINT?.value
       }
-      // this.productservice.EditProduct(this.productId, oldProduct).subscribe(
-      //   () => {
-      //     this.router.navigate(['/products']);
-      //   }
-      // );
+      this.productservice.EditProduct(this.productId, oldProduct).subscribe(
+        () => {
+          this.router.navigate(['/products']);
+        }
+      );
       console.log(oldProduct);
     }
+  }
+  getCategoryName(id:string):any{
+    return this.categories.find(c=>c.id==id)?.name;
+  }
+  isEqual(a:string,b:string):Boolean{
+    return a==b;
   }
 
 }

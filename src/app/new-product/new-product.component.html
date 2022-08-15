@@ -37,8 +37,8 @@
                                     [class.is-invalid]="CATEGORY?.invalid && CATEGORY?.dirty"
                                     style="border-radius: 0px;">
                                     <option value="" selected>إختر النوع</option>
-                                    <option *ngFor="let cat of categories; let i =  index;" [value]="cat.title">
-                                        {{cat.title}}
+                                    <option *ngFor="let cat of categories" [value]="cat.id">
+                                        {{cat.name}}
                                     </option>
                                 </select>
                                 <small class="text-danger" *ngIf="CATEGORY?.invalid && CATEGORY?.dirty">إختر نوع
@@ -68,10 +68,10 @@
                             <div class="col-10">
                                 <label for="maxPrice" class="form-label">أقصي سعر</label>
                                 <input type="number" class="form-control" id="maxPricetext" 
-                                        placeholder="150 ر.س"  name="maxPrice"  formControlName="hint" 
+                                        placeholder="150 ر.س"  name="maxPrice"  formControlName="maxPrice" 
                                         [class.is-invalid]="MAXprice?.invalid && MAXprice?.touched">
-                                <div *ngIf="MAXprice?.invalid && MAXprice?.touched">
-                                        <small class="text-danger" *ngIf="MAXprice?.invalid">يجب إدخال رقم هنا</small>
+                                <div *ngIf="MAXprice?.errors && MAXprice?.touched">
+                                        <small class="text-danger" *ngIf="MAXprice?.errors?.['required']">يجب إدخال رقم هنا</small>
                                 </div>
                             </div>
                         </div>
