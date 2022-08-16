@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of blog">
+                    <tr *ngFor="let item of blog;index as i;">
                         <td>{{item.creationDate|date:'fullDate'}}</td>
                         <td><img src="assets/images/{{item.image}}" width="50px" alt="" srcset=""></td>
                         <!-- <td><img src="assets/images/food.jpeg" width="40px"></td> -->
@@ -29,12 +29,12 @@
                         <td><button type="button" (click)="goToBlogEditor(item.id)" class="btn btn-primary">تعديل</button></td>
                         <td>
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop">
+                            <a type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                href="#ab{{i}}">
                                 حذف
-                            </button>
+                            </a>
                             <!-- Modal -->
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                            <div class="modal fade" id="ab{{i}}" data-bs-backdrop="static"
                                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog">

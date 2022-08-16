@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of products">
+                    <tr *ngFor="let item of products;index as i; ">
                         <td><img src="assets/images/{{item.image1}}" style="width: 40px; "></td>
                         <!-- <td><img src="assets/images/letterheads.jpg" width="40px"></td> -->
                         <td>{{getCategoryName(item.category_Id)}}</td>
@@ -38,12 +38,12 @@
                                 class="btn btn-primary">تعديل</button></td>
                         <td>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">
+                        <a type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        href ="#ab{{i}}">
                         حذف
-                    </button>
+                        </a>
                     <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                    <div class="modal fade" id="ab{{i}}" data-bs-backdrop="static"
                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
@@ -54,17 +54,17 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">تراجع</button>
-                                        {{item.id}}
+                                        
 
                                     <button type="button"  class="btn btn-danger" (click)="DeleteThisProduct(item.id)" data-bs-dismiss="modal">تأكيد الحذف</button>
-                                    {{item.id}}
+                            
 
                                 </div>
                             </div>
                         </div>
                     </div>
                         </td>
-                        {{item.id}}
+    
                     </tr>
                 </tbody>
             </table>
