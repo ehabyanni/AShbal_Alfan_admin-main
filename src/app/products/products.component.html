@@ -34,37 +34,38 @@
                             <h6 style="color: rgb(84, 209, 84); display: inline; font-weight: 600;">{{item.maxPrice}}
                             </h6> ر.س
                         </td>
-                        <td><button type="button" (click)="goToProductEditor(item.id)"
-                                class="btn btn-primary">تعديل</button></td>
                         <td>
-                        <!-- Button trigger modal -->
-                        <a type="button" class="btn btn-danger" data-bs-toggle="modal"
-                        href ="#ab{{i}}">
-                        حذف
-                        </a>
-                    <!-- Modal -->
-                    <div class="modal fade" id="ab{{i}}" data-bs-backdrop="static"
-                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">هل متأكد من حذف هذه المنتج</h5>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">تراجع</button>
-                                        
-
-                                    <button type="button"  class="btn btn-danger" (click)="DeleteThisProduct(item.id)" data-bs-dismiss="modal">تأكيد الحذف</button>
-                            
-
+                            <button type="button" (click)="goToProductEditor(item.id)"
+                                class="btn btn-primary btn-sm">تعديل</button>
+                            &nbsp;
+                            <button type="button" (click)="goToPriceEditor(item.id)"
+                                class="btn btn-outline-dark btn-sm">تحديث الأسعار</button>
+                            &nbsp;
+                            <!-- Button trigger modal -->
+                            <a type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" href="#ab{{i}}">
+                                حذف
+                            </a>
+                            <!-- Modal -->
+                            <div class="modal fade" id="ab{{i}}" data-bs-backdrop="static" data-bs-keyboard="false"
+                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">هل متأكد من حذف هذا المنتج
+                                            </h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">تراجع</button>
+                                            <button type="button" class="btn btn-danger"
+                                                (click)="DeleteThisProduct(item.id)" data-bs-dismiss="modal">تأكيد
+                                                الحذف</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
                         </td>
-    
+
                     </tr>
                 </tbody>
             </table>

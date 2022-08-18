@@ -14,6 +14,7 @@ import { NewProductComponent } from './new-product/new-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AuthInterceptor } from './helpers/auth.interceptor';
+import { EditPriceComponent } from './edit-price/edit-price.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
     ProductsComponent,
     NewProductComponent,
     EditProductComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    EditPriceComponent
   ],
   imports: [
     BrowserModule,

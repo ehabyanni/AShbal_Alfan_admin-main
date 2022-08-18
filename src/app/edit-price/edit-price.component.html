@@ -1,0 +1,104 @@
+<!-- font awesome -->
+<!--online-->
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v6.1.2/css/all.css">
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v3.1.2/css/all.css">
+
+
+<div class="containerfluid" style="direction:rtl !important;">
+    <div class="container" style="background-color:white; padding: 10px; border-radius: 15px;">
+        <div class="scroooll" style="width: 100%; height: 575px; overflow-y: scroll;">
+            <div class="col-12 col-sm-12 col-md-12">
+                <div class="row col-11" style="margin: auto; padding-top: 20px; padding-bottom: 10px;">
+                    <div *ngIf="amount; then firstblock; else empty1block"></div>
+                    <ng-template #firstblock>
+                        <!--في حالة وجود الكمية والخامه-->
+                        <div class="row">
+                            <div class="col-6">
+                                <h4 style="font-weight: 600; color: #1c1c1c;">{{product.title}}</h4>
+                            </div>
+                            <div class="col-6" style="text-align: left; ">
+                                <button type="button" class="btn btn-primary btn-md" (click)="updatePrice()" >تأكيد التحديث </button>
+                                &nbsp;
+                                &nbsp;
+                                <a class="btn text-danger" routerLink="/home/products">رجوع</a>
+                            </div>
+                        </div>
+                        <br>
+                        <table class="table table-striped" style="text-align: center;">
+                            <thead>
+                                <tr>
+                                    <th>الخامة</th>
+                                    <th>الكمية</th>
+                                    <th>السعر</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let p of prices">
+                                    <td>{{p.type}}</td>
+                                    <td>{{p.amount}}</td>
+                                    <td>
+                                        <input type="text" id="titletext" class="form-control"  value={{p.price}}
+                                            style="width: 70px; height: 30px; border-radius:0px; margin: auto; text-align: center;" >
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </ng-template>
+                    <ng-template #empty1block>
+                        <div>
+                            <!--في حالة وجود الخامه فقط-->
+                            <div *ngIf="type; then secondblock; else empty2block"></div>
+                            <ng-template #secondblock>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h4 style="font-weight: 600; color: #1c1c1c;">{{product.title}}</h4>
+                                    </div>
+                                    <div class="col-6" style="text-align: left; ">
+                                        <button type="button" class="btn btn-primary btn-md" (click)="updatePrice()" >تأكيد التحديث </button>
+                                        &nbsp;
+                                        &nbsp;
+                                        <a class="btn text-danger" routerLink="/home/products">رجوع</a>
+                                    </div>
+                                </div>
+                                <br>
+                                <table class="table table-striped" style="text-align: center;">
+                                    <thead>
+                                        <tr>
+                                            <th>الخامة</th>
+                                            <th>السعر</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let p of prices">
+                                            <td>{{p.type}}</td>
+                                            <td>
+                                                <input type="text" id="titletext" class="form-control"  value={{p.price}}
+                                                    style="width: 70px; height: 30px; border-radius:0px; margin: auto; text-align: center;" >
+                                                   
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </ng-template>
+                            <ng-template #empty2block>
+                                <!-- فى حالة عدم وجود شئ-->
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h4 style="font-weight: 600; color: #1c1c1c;">{{product.title}}</h4>
+                                    </div>
+                                    <div class="col-6" style="text-align: left; ">
+                                        <a class="btn text-danger" routerLink="/home/products">رجوع</a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div style="display: flex; justify-content: center; align-items: center; height: 400px; width: 100%;">
+                                    <h5 style="color: rgb(84, 209, 84); font-weight: 600;">لا توجد خطة أسعار</h5>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

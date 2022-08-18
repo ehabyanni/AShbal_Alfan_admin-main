@@ -7,7 +7,7 @@
 <div class="containerfluid" style="direction:rtl !important;">
     <div class="container" style="background-color:white; padding: 10px; border-radius: 15px;">
         <div class="row scrooool" style="width: 100%; height: 575px; overflow-y: scroll;">
-            <div class="col-11 col-sm-11 col-md-11">
+            <div class="col-11 col-sm-11 col-md-11" style="margin: auto;">
                 <div class="row" style=" padding-top: 30px; padding-bottom: 30px;">
 
                     <form [formGroup]="productForm" method="post" id="formID">
@@ -52,7 +52,7 @@
 
                         <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
                             <!--minPrice-->
-                            <div class="col-12 col-sm-6 col-md-4">
+                            <div class="col-12 col-sm-6 col-md-3">
                                 <div class="col-11">
                                     <label for="minPrice" class="form-label">أدني سعر :</label>
                                     <input type="number" class="form-control" id="minPricetext" placeholder="50 ر.س"
@@ -65,7 +65,7 @@
                             </div>
 
                             <!--maxPrice-->
-                            <div class="col-12 col-sm-6 col-md-4">
+                            <div class="col-12 col-sm-6 col-md-3">
                                 <div class="col-10">
                                     <label for="maxPrice" class="form-label">أقصي سعر</label>
                                     <input type="number" class="form-control" id="maxPricetext" placeholder="150 ر.س"
@@ -78,8 +78,22 @@
                                 </div>
                             </div>
 
+                            <!--sku-->
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="col-10">
+                                    <label for="sku" class="form-label">: sku</label>
+                                    <input type="text" class="form-control" id="skutext"
+                                        placeholder="ASH0302" name="sku" formControlName="sku"
+                                        [class.is-invalid]="SKU?.invalid && SKU?.touched">
+                                        <div *ngIf="SKU?.errors && SKU?.touched">
+                                            <small class="text-danger" *ngIf="SKU?.errors?.['required']">يجب إدخال كود المنتج
+                                                هنا</small>
+                                        </div>
+                                </div>
+                            </div>
+
                             <!--hint-->
-                            <div class="col-12 col-sm-6 col-md-4">
+                            <div class="col-12 col-sm-6 col-md-3">
                                 <div class="col-10">
                                     <label for="hint" class="form-label">ملاحظة</label>
                                     <input type="text" class="form-control" id="hinttext"
@@ -193,7 +207,7 @@
                             جميع البيانات </p>
 
                         <button type="submit" (click)="addProduct()" class="btn btn-primary"
-                            [disabled]="TITLE?.invalid || MAXprice?.invalid || MINPRICE?.invalid || HINT?.invalid || CATEGORY?.invalid || DESCRIPTION?.invalid">
+                            [disabled]="TITLE?.invalid || MAXprice?.invalid || SKU?.invalid || MINPRICE?.invalid || HINT?.invalid || CATEGORY?.invalid || DESCRIPTION?.invalid">
                             إضافة المنتج
                         </button>
                         &nbsp;

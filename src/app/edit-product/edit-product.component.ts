@@ -26,6 +26,7 @@ export class EditProductComponent implements OnInit {
     category: ['', Validators.required],
     minPrice: ['', [Validators.required]],
     maxPrice: ['', [Validators.required]],
+    sku: ['', [Validators.required]],
     hint: ['', Validators.maxLength(30)],
     description: ['', [Validators.required, Validators.minLength(50)]]
   })
@@ -48,6 +49,11 @@ export class EditProductComponent implements OnInit {
   //minPric property
   get MAXprice() {
     return this.productForm.get('maxPrice');
+  }
+
+  //sku property
+  get SKU() {
+    return this.productForm.get('sku');
   }
 
   //hint property
@@ -90,7 +96,7 @@ export class EditProductComponent implements OnInit {
         image3: this.fileName3?this.fileName3.fileName:this.product.image3,
         image4: this.fileName4?this.fileName4.fileName:this.product.image4,
         image5: "aaaaaaaa",
-        sku: "QI159",
+        sku: this.SKU?.value,
         creationDate: new Date(),
         category_Id: this.CATEGORY?.value,
         minPrice: this.MINPRICE?.value,

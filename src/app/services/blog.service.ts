@@ -11,7 +11,7 @@ export class BlogService {
   constructor(private http:HttpClient) { }
 
   public _url = "http://localhost:5216/api/Blog"
-  // public _url= "/assets/data/blogitems.json"
+  //public _url= "/assets/data/blogitems.json"
   blog:any = [];
 
   //all blog items

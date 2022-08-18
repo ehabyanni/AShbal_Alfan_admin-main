@@ -22,6 +22,7 @@ export class NewProductComponent implements OnInit {
     category: ['', Validators.required],
     minPrice: ['' , [Validators.required]],
     maxPrice: ['', [Validators.required]],
+    sku: ['', [Validators.required]],
     hint: ['' , Validators.maxLength(30)],
     description: ['', [Validators.required, Validators.minLength(50)]]
   })
@@ -47,9 +48,14 @@ export class NewProductComponent implements OnInit {
   }
 
   //hint property
-  get HINT() {
-    return this.productForm.get('hint');
+  get SKU() {
+    return this.productForm.get('sku');
   }
+
+  //hint property
+get HINT() {
+  return this.productForm.get('hint');
+}
 
   //description preperty
   get DESCRIPTION() {
@@ -78,7 +84,7 @@ export class NewProductComponent implements OnInit {
         image3: this.fileName3.fileName,
         image4: this.fileName4.fileName,
         image5: this.fileName4.fileName,
-        sku: "QI159",
+        sku: this.SKU?.value,
         creationDate: new Date(),
         category_Id: this.CATEGORY?.value,
         minPrice: this.MINPRICE?.value,

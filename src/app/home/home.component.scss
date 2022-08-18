@@ -82,3 +82,18 @@ body {
 .scroooll::-webkit-scrollbar-thumb:hover {
     background: rgb(207, 16, 16); 
   }
+
+
+
+
+/*logout btn*/
+.out{
+    border: 1px solid #bb2d3b;
+    border-radius: 0px;
+    color: #bb2d3b;
+    font-weight: 600;
+}
+.out:hover{
+    background-color: #bb2d3b;
+    color: white;
+}

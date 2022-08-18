@@ -52,5 +52,11 @@ export class ProductsComponent implements OnInit {
   getCategoryName(id:string):any{
     return this.categories.find(c=>c.id==id)?.name;
   }
+
+  goToPriceEditor(id: any) {
+    //navigate to product editor
+    this.router.navigate(['/home/edit-price', id]);
+    console.log(id);
+  }
   
 }

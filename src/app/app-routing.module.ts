@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BlogsComponent } from './blogs/blogs.component';
 import { EditBlogComponent } from './edit-blog/edit-blog.component';
+import { EditPriceComponent } from './edit-price/edit-price.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
       {path:'edit-blog/:id'     , component:EditBlogComponent     },
       {path:'products'          , component:ProductsComponent     },
       {path:'new-product'       , component:NewProductComponent   },
-      {path:'edit-product/:id'  , component:EditProductComponent  }
+      {path:'edit-product/:id'  , component:EditProductComponent  },
+      {path:'edit-price/:id'     , component:EditPriceComponent     },
     ]
   },
   {path:'login'             , component:LoginPageComponent            },
