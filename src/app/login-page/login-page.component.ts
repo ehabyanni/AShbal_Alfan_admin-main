@@ -11,10 +11,10 @@ import { TokenService } from '../services/token.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  
-  constructor(private fornmbuilder: FormBuilder ,
-     private router:Router,private authService:AuthService,
-     private tokenStorage: TokenService) { }
+
+  constructor(private fornmbuilder: FormBuilder,
+    private router: Router, private authService: AuthService,
+    private tokenStorage: TokenService) { }
 
   loginForm = this.fornmbuilder.group({
     username: ['', [Validators.required, Validators.minLength(6)]],
@@ -33,33 +33,32 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.tokenStorage.getToken()!=null){
+    if (this.tokenStorage.getToken() != null) {
       this.isLoggedIn = true;
     }
-    if(this.isLoggedIn){
-      this.router.navigate(['home']);
+    if (this.isLoggedIn) {
+      this.router.navigate(['home/dashboard']);
 
     }
   }
   isLoggedIn = false;
   errorMessage = '';
 
-  sumbitUsername(){
-    if (this.USERNAME != null && this.PASS != null) {
-      this.authService.login(this.USERNAME.value,this.PASS.value).subscribe(
-        data => {
-          this.tokenStorage.saveToken(data.token);
-          this.isLoggedIn = true;
-          this.router.navigate(['home']);
-        },
-        err => {
-          this.errorMessage = "خطأ في اسم المستخدم او كلمة سر";
-        }
-  
-      );
-      
-      
-    }
-  }
+  sumbitUsername() {
+    // if (this.USERNAME != null && this.PASS != null) {
+    //   this.authService.login(this.USERNAME.value,this.PASS.value).subscribe(
+    //     data => {
+    //       this.tokenStorage.saveToken(data.token);
+    //       this.isLoggedIn = true;
+    //       this.router.navigate(['home/dashboard']);
+    //     },
+    //     err => {
+    //       this.errorMessage = "خطأ في اسم المستخدم او كلمة سر";
+    //     }
 
+    //   );
+
+    this.router.navigate(['home/dashboard']);
+  }
 }
+
