@@ -6,25 +6,56 @@
 
 <div class="containerfluid" style="direction:rtl;">
     <div class="container" style="background-color:white; padding: 10px; border-radius: 15px;">
-        <a routerLink="/home/new-product" type="button" class="btn btn-success">إضافة منتج جديد</a>
-        <br>
-        <br>
+        <div class="row" style="padding-bottom: 15px;">
+            <div class="col-4" style="float: right;">
+                <a routerLink="/home/new-product" type="button" class="btn btn-success">إضافة منتج جديد</a>
+            </div>
+            <div class="col-4" style="float: right;">
+                <div class="col-10">
+                    <label class="form-label col-2" style="font-weight: 600; height: 38px; padding-top: 6px; color: #1c1c1c; float: right;">الترتيب</label>
+                    <div class="col-10" style="float: right;">
+                        <select class="form-select" style="border-radius: 0px;" formControlName="sortValueSelected"
+                            (change)="showSort($event)">
+                            <option value="" selected>بدون الترتيب</option>
+                            <option *ngFor="let value of sortValues" value={{value}}>
+                                {{value}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4" style="float: right;">
+                <div class="col-12">
+                    <div class="col-9" style="border:1px solid rgb(197, 197, 197);">
+                        <div class="searchIcon"
+                            style="width: 38px; height: 38px; float: right; display: flex; justify-content: center; align-items:center ;">
+                            <i class="fa-solid fa-magnifying-glass"
+                                style="color: #1c1c1c; transform: rotate(90deg); "></i>
+                        </div>
+                        <input class="search form-class" placeholder="بحث بالإسم أو بالفئة . . . "
+                            (keyup)="search($event)"
+                            style="height: 38px; width: 80%; border: none; outline: none; padding-right: 5px;">
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="scroooll" style=" width: 100%; height: 510px; display: block; overflow: auto;">
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">الصورة</th>
-                        <th>الفئة</th>
-                        <th scope="col">الاسم</th>
-                        <th scope="col">يبدأ من</th>
-                        <th scope="col"> إلي</th>
+                        <th scope="col">الفئــة</th>
+                        <th scope="col">الاســـــم</th>
+                        <th scope="col">أدني سعر</th>
+                        <th scope="col">أقصي سعر</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of products;index as i; ">
+                    <tr *ngFor="let item of showProducts;index as i; ">
                         <td><img src="assets/images/{{item.image1}}" style="width: 40px; "></td>
                         <!-- <td><img src="assets/images/letterheads.jpg" width="40px"></td> -->
-                        <td>{{getCategoryName(item.category_Id)}}</td>
+                        <!-- <td>{{getCategoryName(item.category_Id)}}</td> -->
+                        <td>{{item.category_Name}}</td>
                         <td>{{item.title}}</td>
                         <td>
                             <h6 style="color: rgb(84, 209, 84); display: inline; font-weight: 600;">{{item.minPrice}}
@@ -65,11 +96,9 @@
                                 </div>
                             </div>
                         </td>
-
                     </tr>
                 </tbody>
             </table>
         </div>
-
     </div>
 </div>
