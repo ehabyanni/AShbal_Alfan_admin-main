@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IProduct } from '../interfaces/Iproduct';
+import { IProductDetails } from '../interfaces/IProductDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,14 @@ export class ProductsService {
   EditProduct(id:any , product:any){
     return this.http.patch<IProduct>(this._url+"/"+id,product);
   }
+
+  GetProductPricePlane(id:any){
+   return  this.http.get<IProductDetails[]>(this._url+"/price-plan/"+id);
+  }
+
+  EditProductPricePlane(id:any,productdetails:IProductDetails[]){
+    return  this.http.post(this._url+"/price-plan/"+id,productdetails);
+   }
+ 
 
 }
