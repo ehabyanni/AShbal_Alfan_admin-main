@@ -10,6 +10,7 @@ import { NewBlogComponent } from './new-blog/new-blog.component';
 import { NewProductComponent } from './new-product/new-product.component';
 import { NumberBlogsProductsComponent } from './number-blogs-products/number-blogs-products.component';
 import { ProductsComponent } from './products/products.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {path:''                      , component:NumberBlogsProductsComponent                },
@@ -23,7 +24,8 @@ const routes: Routes = [
       {path:'new-product'       , component:NewProductComponent             },
       {path:'edit-product/:id'  , component:EditProductComponent            },
       {path:'edit-price/:id'    , component:EditPriceComponent              },
-      {path:'dashboard'         , component:NumberBlogsProductsComponent    }
+      {path:'dashboard'         , component:NumberBlogsProductsComponent    },
+      {path:'users'             , component:UsersComponent                  }
     ]
   },
   {path:'login'                 , component:LoginPageComponent                          },

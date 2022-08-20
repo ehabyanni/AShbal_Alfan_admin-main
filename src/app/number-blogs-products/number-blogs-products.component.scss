@@ -40,7 +40,7 @@
     transition: 0.5s all ease-in-out;
 }
 .secondsecond{
-    background-color: rgba($color: #0E7E4A, $alpha: 0.6);
+    background-image: linear-gradient(to right , rgba($color: #0E7E4A, $alpha: 0.6) , rgba($color: #035B74, $alpha: 0.6) );
     margin: auto; 
     text-align: center; 
     height: 250px; 
@@ -50,6 +50,34 @@
 
 
 .second:hover .secondsecond{
+    background-image: linear-gradient(to right , rgba($color: #10d479, $alpha: 0.8) , rgba($color: #0182a6, $alpha: 0.8) );
+    color: white;
+    
+}
+
+
+.third{
+    background: url(/assets/images/wallpaperflare.com_wallpaper.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto; 
+    text-align: center; 
+    height: 250px; 
+    border-radius: 15px; 
+    box-shadow: 0px 0px 10px rgb(161, 161, 161);
+    transition: 0.5s all ease-in-out;
+}
+.thirdthird{
+    background-color: rgba($color: #0E7E4A, $alpha: 0.6);
+    margin: auto; 
+    text-align: center; 
+    height: 250px; 
+    border-radius: 15px; 
+    color: white;
+}
+
+
+.third:hover .thirdthird{
     background-color: rgba($color: #10d479, $alpha: 0.8);
     color: white;
     

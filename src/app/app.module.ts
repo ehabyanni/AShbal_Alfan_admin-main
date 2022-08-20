@@ -16,6 +16,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { AuthInterceptor } from './helpers/auth.interceptor';
 import { EditPriceComponent } from './edit-price/edit-price.component';
 import { NumberBlogsProductsComponent } from './number-blogs-products/number-blogs-products.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NumberBlogsProductsComponent } from './number-blogs-products/number-blo
     EditProductComponent,
     LoginPageComponent,
     EditPriceComponent,
-    NumberBlogsProductsComponent
+    NumberBlogsProductsComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

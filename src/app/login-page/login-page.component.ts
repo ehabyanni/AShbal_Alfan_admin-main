@@ -22,12 +22,12 @@ export class LoginPageComponent implements OnInit {
   })
 
 
-  //email preperty
+  //username preperty
   get USERNAME() {
     return this.loginForm.get('username');
   }
 
-  //name property
+  //password property
   get PASS() {
     return this.loginForm.get('pass');
   }
@@ -41,6 +41,7 @@ export class LoginPageComponent implements OnInit {
 
     }
   }
+  
   isLoggedIn = false;
   errorMessage = '';
 
