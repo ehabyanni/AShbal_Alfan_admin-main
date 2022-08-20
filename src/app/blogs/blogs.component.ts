@@ -13,9 +13,11 @@ export class BlogsComponent implements OnInit {
   constructor(private itemsBlog: BlogService, private router: Router , private activeroute:ActivatedRoute) { }
 
   blog: IBlog[] = []
-
+  page:number=0;
+  pageSize:number=2;
+  isAllBlogsExist:Boolean=false;
   ngOnInit(): void {
-    this.itemsBlog.GetAllItems().subscribe(
+    this.itemsBlog.GetAllItemsPagination(this.page,this.pageSize).subscribe(
       data => {
         this.blog = data;
       }
@@ -35,6 +37,17 @@ export class BlogsComponent implements OnInit {
     //navigate to blog editor
     this.router.navigate(['/home/edit-blog', id]);
     console.log(id);
+  }
+  getNext(){
+    this.page+=1;
+    this.itemsBlog.GetAllItemsPagination(this.page,this.pageSize).subscribe(
+      data => {
+        this.blog.push(...data);
+        if(data.length!=this.pageSize){
+          this.isAllBlogsExist=true;
+        }
+      }
+    )
   }
 
 }

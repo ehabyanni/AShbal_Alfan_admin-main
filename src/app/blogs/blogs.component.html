@@ -54,6 +54,14 @@
                     </tr>
                 </tbody>
             </table>
+
+            <div class="row" *ngIf="!isAllBlogsExist">
+                <div class="text-center" width="5%">
+
+                <button class="out btn btn-secondry btn-sm"  (click)="getNext()">المزيد</button>
+
+            </div>
+            </div>
         </div>
 
     </div>

@@ -19,6 +19,10 @@ export class BlogService {
     this.blog =  this.http.get<IBlog[]>(this._url);
     return this.blog;
   }
+  GetAllItemsPagination( page:number,pageSize:number):Observable<IBlog[]>{
+    this.blog =  this.http.get<IBlog[]>(this._url+"/page?page="+page+"&pageSize="+pageSize);
+    return this.blog;
+  }
 
   //delete a blog (item)
   DeleteItem(blogid:string):Observable<any>{
