@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../interfaces/Iproduct';
+import { IUser } from '../interfaces/IUser';
 import { ProductsService } from '../services/products.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-users',
@@ -9,42 +11,17 @@ import { ProductsService } from '../services/products.service';
 })
 export class UsersComponent implements OnInit {
 
-  constructor(private productservice:ProductsService) { }
+  constructor(private userservice:UserService) { }
 
   showProducts:IProduct[] = [];
 
-  users = [
-    {
-      "name"  : "Ahmed Hassan",
-      "email" : "ahmed12hassan@hotmail.com"
-    },
-    {
-      "name"  : "Ahmed Hassan",
-      "email" : "ahmed12hassan@hotmail.com"
-    },
-    {
-      "name"  : "Ahmed Hassan",
-      "email" : "ahmed12hassan@hotmail.com"
-    },
-    {
-      "name"  : "Ahmed Hassan",
-      "email" : "ahmed12hassan@hotmail.com"
-    },
-    {
-      "name"  : "Ahmed Hassan",
-      "email" : "ahmed12hassan@hotmail.com"
-    },
-    {
-      "name"  : "Ahmed Hassan",
-      "email" : "ahmed12hassan@hotmail.com"
-    },
-  ]
+  users:IUser[]=[];
 
   ngOnInit(): void {
     //Fill Products
-    this.productservice.GetAllProducts().subscribe(
+    this.userservice.GetAllItems().subscribe(
       data => {
-        this.showProducts = data;
+        this.users = data;
       }
     )
 

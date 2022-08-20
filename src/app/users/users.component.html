@@ -7,17 +7,15 @@
 <div class="containerfluid" style="direction:rtl;">
     <div class="container" style="background-color:white; padding: 10px; border-radius: 15px;">
         <div class="scroooll" style=" width: 100%; height: 510px; display: block; overflow: auto;">
-            <table class="table">
+            <table class="table" style="text-align: center;">
                 <thead>
                     <tr>
                         <th scope="col">اسم المستخدم</th>
-                        <th scope="col">البريد الإلكتروني</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of users;">
-                        <td>{{item.name}}</td>
-                        <td>{{item.email}}</td>
+                        <td>{{item.userName}}</td>
                     </tr>
                 </tbody>
             </table>
