@@ -99,6 +99,7 @@ export class EditProductComponent implements OnInit {
         sku: this.SKU?.value,
         creationDate: new Date(),
         category_Id: this.CATEGORY?.value,
+        category_Name: this.categories.find(c=>c.id==this.CATEGORY?.value)?.name,
         minPrice: this.MINPRICE?.value,
         maxPrice: this.MAXprice?.value,
         hint: this.HINT?.value

@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/ht
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ICategory } from '../interfaces/Icategory';
 import { CategoriesService } from '../services/categories.service';
 import { ProductsService } from '../services/products.service';
 
@@ -63,7 +64,7 @@ get HINT() {
   }
 
 
-  categories:any = []; 
+  categories:ICategory[] = []; 
 
   ngOnInit(): void {
     this.categservice.GetAllCategories().subscribe(
@@ -87,9 +88,12 @@ get HINT() {
         sku: this.SKU?.value,
         creationDate: new Date(),
         category_Id: this.CATEGORY?.value,
+        category_Name: this.categories.find(c=>c.id==this.CATEGORY?.value)?.name,
         minPrice: this.MINPRICE?.value,
         maxPrice: this.MAXprice?.value,
-        hint: this.HINT?.value
+        hint: this.HINT?.value,
+        isTypeExist:false,
+        isAmountExist:false
       }
       console.log(newProduct);
       this.productservice.AddProduct(newProduct).subscribe(

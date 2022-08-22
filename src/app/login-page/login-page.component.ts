@@ -46,20 +46,24 @@ export class LoginPageComponent implements OnInit {
   errorMessage = '';
 
   sumbitUsername() {
-    // if (this.USERNAME != null && this.PASS != null) {
-    //   this.authService.login(this.USERNAME.value,this.PASS.value).subscribe(
-    //     data => {
-    //       this.tokenStorage.saveToken(data.token);
-    //       this.isLoggedIn = true;
-    //       this.router.navigate(['home/dashboard']);
-    //     },
-    //     err => {
-    //       this.errorMessage = "خطأ في اسم المستخدم او كلمة سر";
-    //     }
+    if (this.USERNAME != null && this.PASS != null) {
+      this.authService.login(this.USERNAME.value,this.PASS.value).subscribe(
+        data => {
+        if(data.role=="Admin"){    
+            this.tokenStorage.saveToken(data.token);
+            this.isLoggedIn = true;
+            this.router.navigate(['home/dashboard']);
+          }else{
+            this.errorMessage = "خطأ في اسم المستخدم او كلمة سر";
+          }
+        },
+        err => {
+          this.errorMessage = "خطأ في اسم المستخدم او كلمة سر";
+        }
 
-    //   );
+      );
 
-    this.router.navigate(['home/dashboard']);
   }
+}
 }
 
