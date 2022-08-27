@@ -51,6 +51,7 @@ export class LoginPageComponent implements OnInit {
         data => {
         if(data.role=="Admin"){    
             this.tokenStorage.saveToken(data.token);
+            this.tokenStorage.saveUser(data.username);
             this.isLoggedIn = true;
             this.router.navigate(['home/dashboard']);
           }else{

@@ -10,8 +10,7 @@ import { NewBlogComponent } from './new-blog/new-blog.component';
 import { NewProductComponent } from './new-product/new-product.component';
 import { NumberBlogsProductsComponent } from './number-blogs-products/number-blogs-products.component';
 import { ProductsComponent } from './products/products.component';
-import { UsersComponent } from './users/users.component';
-
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 const routes: Routes = [
   {path:''                      , component:NumberBlogsProductsComponent                },
   {
@@ -25,7 +24,7 @@ const routes: Routes = [
       {path:'edit-product/:id'  , component:EditProductComponent            },
       {path:'edit-price/:id'    , component:EditPriceComponent              },
       {path:'dashboard'         , component:NumberBlogsProductsComponent    },
-      {path:'users'             , component:UsersComponent                  }
+      {path:"reset-password"    , component:ResetPasswordComponent          }
     ]
   },
   {path:'login'                 , component:LoginPageComponent                          },

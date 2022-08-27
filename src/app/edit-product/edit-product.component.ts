@@ -1,6 +1,7 @@
 import { HttpClient,HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICategory } from '../interfaces/Icategory';
 import { CategoriesService } from '../services/categories.service';
@@ -12,7 +13,8 @@ import { ProductsService } from '../services/products.service';
   styleUrls: ['./edit-product.component.scss']
 })
 export class EditProductComponent implements OnInit {
-
+  isTypeExist:Boolean=false;
+  isAmountExist:Boolean=false;
   constructor(private formbuilder: FormBuilder,
     private productservice: ProductsService,
     private router: Router,
@@ -28,9 +30,38 @@ export class EditProductComponent implements OnInit {
     maxPrice: ['', [Validators.required]],
     sku: ['', [Validators.required]],
     hint: ['', Validators.maxLength(30)],
-    description: ['', [Validators.required, Validators.minLength(50)]]
-  })
+    description: ['', [Validators.required, Validators.minLength(50)]],
+    priceplan: ['', [Validators.required]],
+    priceplans: this.formbuilder.array([])
 
+  })
+  
+  pricePlan() : FormArray {
+    return this.productForm.get("priceplans") as FormArray;
+  }
+
+  newPricePlan(): FormGroup {
+    if(this.isAmountExist){
+    return this.formbuilder.group({
+      type: '',
+      amount: '',
+      price: ''
+    })
+  }else{
+    return this.formbuilder.group({
+      type: '',
+      price: ''
+    })
+  }
+  }
+  addPricePlan() {
+    this.pricePlan().push(this.newPricePlan());
+    console.log(this.pricePlan().value)
+  }
+   
+  removePricePlan(i:number) {
+    this.pricePlan().removeAt(i);
+  }
   //title property
   get TITLE() {
     return this.productForm.get('title');
@@ -75,8 +106,23 @@ export class EditProductComponent implements OnInit {
     this.productId = this.activeroute.snapshot.paramMap.get('id');
     this.productservice.GetAllProducts().subscribe(
       data => {
-        this.product = data.find(x => x.id == this.productId);
-        console.log(this.product);
+          this.product = data.find(x => x.id == this.productId);
+          this.isTypeExist=this.product.isTypeExist
+          this.isAmountExist=this.product.isAmountExist
+          this.productForm.setValue({title:this.product.title,category:this.product.category_Id,minPrice:this.product.minPrice,maxPrice:this.product.maxPrice,sku:this.product.sku,hint:"",description:this.product.description,priceplan:(this.isTypeExist&&this.isAmountExist)?"3":(this.isTypeExist)?"2":"1",priceplans:[]})        
+          if(this.isTypeExist&&this.isAmountExist)
+          console.log(this.product);
+      }
+    )
+    this.productservice.GetProductPricePlane(this.productId).subscribe(
+      data=>{
+        for(let pd of data){
+        this.pricePlan().push(this.formbuilder.group({
+          type: pd.type,
+          amount: pd.amount,
+          price: pd.price
+        }))
+      }
       }
     )
     this.categservice.GetAllCategories().subscribe(
@@ -102,7 +148,10 @@ export class EditProductComponent implements OnInit {
         category_Name: this.categories.find(c=>c.id==this.CATEGORY?.value)?.name,
         minPrice: this.MINPRICE?.value,
         maxPrice: this.MAXprice?.value,
-        hint: this.HINT?.value
+        hint: this.HINT?.value,
+        isTypeExist:this.isTypeExist,
+        isAmountExist:this.isAmountExist,
+        productDetails:this.pricePlan().value
       }
       this.productservice.EditProduct(this.productId, oldProduct).subscribe(
         () => {
@@ -112,6 +161,30 @@ export class EditProductComponent implements OnInit {
       console.log(oldProduct);
     }
   }
+  PricePlaneType(event:any){
+    let value= event.target.value;
+    this.pricePlan().clear();
+    switch(value){
+      case "1":
+        this.isTypeExist=false;
+        this.isAmountExist=false;
+        console.log("Here 1");
+        break;
+
+      case "2":
+        this.isTypeExist=true;
+        this.isAmountExist=false;
+        console.log("Here 2");
+        break;
+      case "3":
+        this.isTypeExist=true;
+        this.isAmountExist=true;
+        console.log("Here 3");
+        break;  
+    }
+  }
+
+
   getCategoryName(id:string):any{
     return this.categories.find(c=>c.id==id)?.name;
   }

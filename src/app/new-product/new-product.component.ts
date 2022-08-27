@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ICategory } from '../interfaces/Icategory';
 import { CategoriesService } from '../services/categories.service';
@@ -12,7 +12,8 @@ import { ProductsService } from '../services/products.service';
   styleUrls: ['./new-product.component.scss']
 })
 export class NewProductComponent implements OnInit {
-
+  isTypeExist:Boolean=false;
+  isAmountExist:Boolean=false;
   constructor(private formbuilder: FormBuilder,
     private productservice: ProductsService,
     private router: Router,
@@ -25,9 +26,36 @@ export class NewProductComponent implements OnInit {
     maxPrice: ['', [Validators.required]],
     sku: ['', [Validators.required]],
     hint: ['' , Validators.maxLength(30)],
-    description: ['', [Validators.required, Validators.minLength(50)]]
-  })
+    description: ['', [Validators.required, Validators.minLength(50)]],
+    priceplans: this.formbuilder.array([])
+  });
 
+  pricePlan() : FormArray {
+    return this.productForm.get("priceplans") as FormArray;
+  }
+
+  newPricePlan(): FormGroup {
+    if(this.isAmountExist){
+    return this.formbuilder.group({
+      type: '',
+      amount: '',
+      price: ''
+    })
+  }else{
+    return this.formbuilder.group({
+      type: '',
+      price: ''
+    })
+  }
+  }
+  addPricePlan() {
+    this.pricePlan().push(this.newPricePlan());
+    console.log(this.pricePlan().value)
+  }
+   
+  removePricePlan(i:number) {
+    this.pricePlan().removeAt(i);
+  }
   //title property
   get TITLE() {
     return this.productForm.get('title');
@@ -37,6 +65,11 @@ export class NewProductComponent implements OnInit {
   get CATEGORY() {
     return this.productForm.get('category');
   }
+
+  get PRICEPLAN() {
+    return this.productForm.get('priceplans');
+  }
+
 
   //minPric property
   get MINPRICE() {
@@ -92,8 +125,9 @@ get HINT() {
         minPrice: this.MINPRICE?.value,
         maxPrice: this.MAXprice?.value,
         hint: this.HINT?.value,
-        isTypeExist:false,
-        isAmountExist:false
+        isTypeExist:this.isTypeExist,
+        isAmountExist:this.isAmountExist,
+        productDetails:this.pricePlan().value
       }
       console.log(newProduct);
       this.productservice.AddProduct(newProduct).subscribe(
@@ -103,7 +137,28 @@ get HINT() {
       )
     }
   }
+  PricePlaneType(event:any){
+    let value= event.target.value;
+    this.pricePlan().clear();
+    switch(value){
+      case "1":
+        this.isTypeExist=false;
+        this.isAmountExist=false;
+        console.log("Here 1");
+        break;
 
+      case "2":
+        this.isTypeExist=true;
+        this.isAmountExist=false;
+        console.log("Here 2");
+        break;
+      case "3":
+        this.isTypeExist=true;
+        this.isAmountExist=true;
+        console.log("Here 3");
+        break;  
+    }
+  }
 
   /*image upload */
   

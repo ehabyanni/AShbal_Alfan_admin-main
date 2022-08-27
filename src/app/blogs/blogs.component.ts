@@ -14,12 +14,15 @@ export class BlogsComponent implements OnInit {
 
   blog: IBlog[] = []
   page:number=0;
-  pageSize:number=2;
+  pageSize:number=10;
   isAllBlogsExist:Boolean=false;
   ngOnInit(): void {
     this.itemsBlog.GetAllItemsPagination(this.page,this.pageSize).subscribe(
       data => {
         this.blog = data;
+        if(data.length!=this.pageSize){
+          this.isAllBlogsExist=true;
+        }
       }
     )
   }

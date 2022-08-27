@@ -43,6 +43,7 @@ export class EditBlogComponent implements OnInit {
       data =>{
         this.blog = data.find(x=> x.id == this.blogId);
         console.log(this.blog);
+        this.blogForm.setValue({title:this.blog.title,content:this.blog.content})
       }
     )
   }

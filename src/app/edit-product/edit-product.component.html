@@ -1,27 +1,25 @@
 <!-- font awesome -->
 <!--online-->
-<link rel="stylesheet" href="//use.fontawesome.com/releases/v6.1.2/css/all.css">
-<link rel="stylesheet" href="//use.fontawesome.com/releases/v3.1.2/css/all.css">
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v6.1.2/css/all.css" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v3.1.2/css/all.css" />
 
-
-<div class="containerfluid" style="direction:rtl !important;">
-    <div class="container" style="background-color:white; padding: 10px; border-radius: 15px;">
-        <div class="scroooll" style="width: 100%; height: 575px; overflow-y: scroll;">
-            <div class="col-11 col-sm-11 col-md-11" style="margin: auto;">
-                <div class="row" style=" padding-top: 30px; padding-bottom: 30px;">
-
+<div class="containerfluid" style="direction: rtl !important">
+    <div class="container" style="background-color: white; padding: 10px; border-radius: 15px">
+        <div class="scroooll" style="width: 100%; height: 575px; overflow-y: scroll">
+            <div class="col-11 col-sm-11 col-md-11" style="margin: auto">
+                <div class="row" style="padding-top: 30px; padding-bottom: 30px">
                     <form [formGroup]="productForm" method="post" id="formID">
-
                         <!--1st row-->
 
-                        <div class="row" style=" padding-bottom: 10px;">
+                        <div class="row" style="padding-bottom: 10px">
                             <!--name-->
                             <div class="col-12 col-sm-6 col-md-6">
                                 <div class="col-11">
                                     <label for="title" class="form-label">إسم المنتج</label>
+                                    ---Title I:{{TITLE?.invalid}} ---Title T: {{TITLE?.touched}}
                                     <input type="text" id="titletext" class="form-control" placeholder="الإسم هنا"
                                         formControlName="title" [class.is-invalid]="TITLE?.invalid && TITLE?.touched"
-                                        style="border-radius:0px ;" value={{product.title}}>
+                                        style="border-radius: 0px"  />
                                     <div *ngIf="TITLE?.errors && TITLE?.touched">
                                         <small class="text-danger" *ngIf="TITLE?.errors?.['required']">يجب إدخال اسم
                                             للمنتج</small>
@@ -37,12 +35,9 @@
                                     <label for="category" class="form-label">فئة المنتج</label>
                                     <select formControlName="category" class="form-select" required
                                         [class.is-invalid]="CATEGORY?.invalid && CATEGORY?.dirty"
-                                        style="border-radius: 0px;">
-                                        <option value="1" selected
-                                            style="background-color: rgb(206, 206, 206); color:silver;">
-                                            {{getCategoryName(product.category_Id)}}</option>
+                                        style="border-radius: 0px">
                                         <option *ngFor="let cat of categories" [value]="cat.id">
-                                            {{cat.name}}
+                                            {{ cat.name }}
                                         </option>
                                     </select>
                                     <small class="text-danger" *ngIf="CATEGORY?.invalid && CATEGORY?.dirty">إختر نوع
@@ -53,7 +48,7 @@
 
                         <!--2nd row-->
 
-                        <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
+                        <div class="row" style="padding-top: 20px; padding-bottom: 20px">
                             <!--minPrice-->
                             <div class="col-12 col-sm-6 col-md-3">
                                 <div class="col-11">
@@ -61,7 +56,7 @@
                                     <input type="number" class="form-control" id="minPricetext" placeholder="50 ر.س"
                                         name="minPrice" formControlName="minPrice"
                                         [class.is-invalid]="MINPRICE?.invalid && MINPRICE?.touched"
-                                        value={{product.minPrice}} style="border-radius:0px ;">
+                                        style="border-radius: 0px" />
                                     <div *ngIf="MINPRICE?.invalid && MINPRICE?.touched">
                                         <small class="text-danger" *ngIf="MINPRICE?.invalid">يجب إدخال رقم هنا</small>
                                     </div>
@@ -75,24 +70,24 @@
                                     <input type="number" class="form-control" id="maxPricetext" placeholder="150 ر.س"
                                         name="maxPrice" formControlName="maxPrice"
                                         [class.is-invalid]="MAXprice?.invalid && MAXprice?.touched"
-                                        value={{product.maxPrice}} style="border-radius:0px ;">
+                                         style="border-radius: 0px" />
                                     <div *ngIf="MAXprice?.invalid && MAXprice?.touched">
                                         <small class="text-danger" *ngIf="MAXprice?.invalid">يجب إدخال رقم هنا</small>
                                     </div>
                                 </div>
                             </div>
-                            
-                             <!--sku-->
-                             <div class="col-12 col-sm-6 col-md-3">
+
+                            <!--sku-->
+                            <div class="col-12 col-sm-6 col-md-3">
                                 <div class="col-10">
-                                    <label for="sku" class="form-label">: sku</label>
-                                    <input type="text" class="form-control" id="skutext"
-                                        placeholder="ASH0302" name="sku" formControlName="sku"
-                                        [class.is-invalid]="SKU?.invalid && SKU?.touched">
-                                        <div *ngIf="SKU?.errors && SKU?.touched">
-                                            <small class="text-danger" *ngIf="SKU?.errors?.['required']">يجب إدخال كود المنتج
-                                                هنا</small>
-                                        </div>
+                                    <label for="sku" class="form-label"> SKU</label>
+                                    <input type="text" class="form-control" id="skutext" placeholder="ASH0302"
+                                        name="sku" formControlName="sku"
+                                        [class.is-invalid]="SKU?.invalid && SKU?.touched" />
+                                    <div *ngIf="SKU?.errors && SKU?.touched">
+                                        <small class="text-danger" *ngIf="SKU?.errors?.['required']">يجب إدخال كود
+                                            المنتج هنا</small>
+                                    </div>
                                 </div>
                             </div>
 
@@ -102,8 +97,8 @@
                                     <label for="hint" class="form-label">ملاحظة</label>
                                     <input type="text" class="form-control" id="hinttext"
                                         placeholder="أحصل ع تسعيرة مميزة..." name="hint" formControlName="hint"
-                                        [class.is-invalid]="HINT?.invalid && HINT?.touched" value={{product.hint}}
-                                        style="border-radius:0px ;">
+                                        [class.is-invalid]="HINT?.invalid && HINT?.touched"
+                                        style="border-radius: 0px" />
                                     <small class="text-danger" *ngIf="HINT?.invalid">النص اقصاه 30 حرف</small>
                                 </div>
                             </div>
@@ -111,112 +106,198 @@
 
                         <!--3rd row - description-->
 
-                        <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
+                        <div class="row" style="padding-top: 20px; padding-bottom: 20px">
                             <div class="col-12">
                                 <label for="description" class="form-label">وصف المنتج</label>
                                 <textarea type="text" class="form-control" id="descriptiontext"
-                                    placeholder="أترك الوصف هنا" formControlName="description"
-                                    [class.is-invalid]="DESCRIPTION?.invalid && DESCRIPTION?.touched"
-                                    style="min-height:70px;" value={{product.description}}
-                                    style="height:100px; border-radius:0px ;">
-                                     </textarea>
+                                    placeholder="أترك الوصف هنا" formControlName="description" [class.is-invalid]="
+                    DESCRIPTION?.invalid && DESCRIPTION?.touched
+                  " style="min-height: 70px" 
+                                    style="height: 100px; border-radius: 0px">
+                </textarea>
                                 <div *ngIf="DESCRIPTION?.errors && DESCRIPTION?.touched">
-                                    <small class="text-danger" *ngIf="DESCRIPTION?.errors?.['required']">يجب إدخال
-                                        وصف المنتج</small>
-                                    <small class="text-danger" *ngIf="DESCRIPTION?.errors?.['minlength']">يجب أن
-                                        يحتوي وصف اللمنتج اكثر من 50 حرف</small>
+                                    <small class="text-danger" *ngIf="DESCRIPTION?.errors?.['required']">يجب إدخال وصف
+                                        المنتج</small>
+                                    <small class="text-danger" *ngIf="DESCRIPTION?.errors?.['minlength']">يجب أن يحتوي
+                                        وصف اللمنتج اكثر من 50 حرف</small>
                                 </div>
                             </div>
                         </div>
 
                         <!--4th row  - images-->
-                        <div class="row" style="padding-bottom: 20px;">
+                        <div class="row" style="padding-bottom: 20px">
                             <!--upload image 1 -->
                             <div class="col-3">
-
                                 <div class="col-11">
                                     <label class="form-label">إضافة صورة 1</label>
-                                    <input class="form-control" style="border-radius: 0px;" aria-placeholder="ggg"
-                                    type="file" id="formFile" #file1 (change)="uploadFile(file1.files,1)">
+                                    <input class="form-control" style="border-radius: 0px" aria-placeholder="ggg"
+                                        type="file" id="formFile" #file1 (change)="uploadFile(file1.files, 1)" />
                                     <!-- <input type="file" style=" padding-top:3px" class="btn btn-succes"  #file placeholder="اختر الصورة" (change)="uploadFile(file.files)" /> -->
                                     <!-- <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button> -->
                                 </div>
 
-                                <div class="col-12" style=" padding-top: 10px;">
+                                <div class="col-12" style="padding-top: 10px">
                                     <!-- <img src="assets/images/food.jpeg" width="100px" height="100px"
                                         style="display: block; margin:auto;"> -->
-                                        <img src="assets/images/{{fileName1?fileName1.fileName:product.image1}}" width="100px" height="100px"
-                                        style="display: block; margin:auto;" alt="" srcset="">                  
+                                    <img src="assets/images/{{
+                      fileName1 ? fileName1.fileName : product.image1
+                    }}" width="100px" height="100px" style="display: block; margin: auto" alt="" srcset="" />
                                 </div>
                             </div>
 
                             <!--upload image 2 -->
                             <div class="col-3">
-
                                 <div class="col-11">
                                     <label class="form-label">إضافة صورة 2</label>
-                                    <input class="form-control" style="border-radius: 0px;" aria-placeholder="ggg"
-                                        type="file" id="formFile" #file2 (change)="uploadFile(file2.files,2)">
+                                    <input class="form-control" style="border-radius: 0px" aria-placeholder="ggg"
+                                        type="file" id="formFile" #file2 (change)="uploadFile(file2.files, 2)" />
                                     <!-- <input type="file" style=" padding-top:3px" class="btn btn-succes"  #file placeholder="اختر الصورة" (change)="uploadFile(file.files)" /> -->
                                     <!-- <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button> -->
                                 </div>
 
-                                <div class="col-12" style=" padding-top: 10px;">
+                                <div class="col-12" style="padding-top: 10px">
                                     <!-- <img src="assets/images/food.jpeg" width="100px" height="100px"
                                         style="display: block; margin:auto;"> -->
-                                        <img src="assets/images/{{fileName2?fileName2.fileName:product.image2}}" width="100px" height="100px"
-                                        style="display: block; margin:auto;" alt="" srcset="">                                </div>
+                                    <img src="assets/images/{{
+                      fileName2 ? fileName2.fileName : product.image2
+                    }}" width="100px" height="100px" style="display: block; margin: auto" alt="" srcset="" />
+                                </div>
                             </div>
 
                             <!--upload image 3 -->
                             <div class="col-3">
-
                                 <div class="col-11">
-                                    <label class="form-label">إضافة صورة 3</label> <input class="form-control"
-                                        style="border-radius: 0px;" aria-placeholder="ggg" type="file" id="formFile"
-                                        #file3 (change)="uploadFile(file3.files,3)">
+                                    <label class="form-label">إضافة صورة 3</label>
+                                    <input class="form-control" style="border-radius: 0px" aria-placeholder="ggg"
+                                        type="file" id="formFile" #file3 (change)="uploadFile(file3.files, 3)" />
                                     <!-- <input type="file" style=" padding-top:3px" class="btn btn-succes"  #file placeholder="اختر الصورة" (change)="uploadFile(file.files)" /> -->
                                     <!-- <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button> -->
                                 </div>
 
-                                <div class="col-12" style=" padding-top: 10px;">
+                                <div class="col-12" style="padding-top: 10px">
                                     <!-- <img src="assets/images/food.jpeg" width="100px" height="100px"
                                         style="display: block; margin:auto;"> -->
-                                    <img src="assets/images/{{fileName3?fileName3.fileName:product.image3}}" width="100px" height="100px"
-                                    style="display: block; margin:auto;" alt="" srcset="">
+                                    <img src="assets/images/{{
+                      fileName3 ? fileName3.fileName : product.image3
+                    }}" width="100px" height="100px" style="display: block; margin: auto" alt="" srcset="" />
                                 </div>
                             </div>
 
                             <!--upload image 4 -->
                             <div class="col-3">
-
                                 <div class="col-11">
-                                    <label class="form-label">إضافة صورة 4</label> <input class="form-control"
-                                        style="border-radius: 0px;" aria-placeholder="ggg" type="file" id="formFile"
-                                        #file4 (change)="uploadFile(file4.files,4)">
+                                    <label class="form-label">إضافة صورة 4</label>
+                                    <input class="form-control" style="border-radius: 0px" aria-placeholder="ggg"
+                                        type="file" id="formFile" #file4 (change)="uploadFile(file4.files, 4)" />
                                     <!-- <input type="file" style=" padding-top:3px" class="btn btn-succes"  #file placeholder="اختر الصورة" (change)="uploadFile(file.files)" /> -->
                                     <!-- <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button> -->
                                 </div>
 
-                                <div class="col-12" style=" padding-top: 10px;">
+                                <div class="col-12" style="padding-top: 10px">
                                     <!-- <img src="assets/images/food.jpeg" width="100px" height="100px"
                                         style="display: block; margin:auto;"> -->
-                                        <img src="assets/images/{{fileName4?fileName4.fileName:product.image4}}" width="100px" height="100px"
-                                        style="display: block; margin:auto;" alt="" srcset="">
-                                    
+                                    <img src="assets/images/{{
+                      fileName4 ? fileName4.fileName : product.image4
+                    }}" width="100px" height="100px" style="display: block; margin: auto" alt="" srcset="" />
                                 </div>
                             </div>
                         </div>
+                        <!-- Pric-Plan -->
+                        <div class="row" style="padding-top: 20px; padding-bottom: 20px">
+                            <div class="col-3">
+                                <label for="pricePlan" class="form-label">خطة الاسعار</label>
+                                <select formControlName="priceplan" class="form-select" require (change)="PricePlaneType($event)"
+                                    style="border-radius: 0px">
+                                    <option [value]="1" selected>بدون تسعيرة</option>
+                                    <option [value]="3">تسعيرة بالنوع و الكمية</option>
+                                    <option [value]="2">تسعيرة بالنوع فقط</option>
+                                </select>
+                                <!-- <small class="text-danger" *ngIf="CATEGORY?.invalid && CATEGORY?.dirty">إختر 
+            خطة الاسعار</small> -->
+                            </div>
+                        </div>
 
-                        <p style="font-size: 14px; font-weight: 600; padding-top: 25px; color: gray;">الرجاء ملئ
-                            جميع البيانات </p>
+                        <div *ngIf="isTypeExist">
+                            <div *ngIf="isAmountExist" formArrayName="priceplans">
+                                <div *ngFor="let pp of pricePlan().controls; let i = index">
+                                    <div class="row" [formGroupName]="i">
+                                        <div class="col-3">
+                                            الخامة :
+                                            <input type="text" formControlName="type" class="form-control" />
+                                        </div>
 
-                        <button type="submit" class="btn btn-primary" (click)="updateProduct()"
-                            [disabled]="TITLE?.invalid || MAXprice?.invalid || MINPRICE?.invalid || HINT?.invalid || SKU?.invalid || CATEGORY?.invalid || DESCRIPTION?.invalid">
-                            إضافة المنتج
+                                        <div class="col-3">
+                                            الكمية :
+                                            <input type="text" formControlName="amount" class="form-control" />
+                                        </div>
+
+                                        <div class="col-3">
+                                            السعر:
+                                            <input type="text" formControlName="price" class="form-control" />
+                                        </div>
+                                        <div class="col-2">
+                                            <a (click)="removePricePlan(i)" class="btn btn-danger"
+                                                style="margin-top: 20px">
+                                                حذف
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="!isAmountExist" formArrayName="priceplans">
+                                <div class="row" *ngFor="let pp of pricePlan().controls; let i = index"
+                                    [formGroupName]="i">
+                                    <div class="col-3">
+                                        الخامة :
+                                        <input type="text" formControlName="type" [value]="pp.value.type"
+                                            class="form-control" />
+                                    </div>
+                                    <div class="col-3">
+                                        السعر:
+                                        <input type="text" [value]="pp.value.price" formControlName="price"
+                                            class="form-control" />
+                                    </div>
+                                    <div class="col-2">
+                                        <a (click)="removePricePlan(i)" class="btn btn-danger" style="margin-top: 20px">
+                                            حذف
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="isTypeExist">
+                            <small class="text-danger" *ngIf="pricePlan()?.errors?.['required']">يجب إدخال جميع
+                                البيانات</small>
+                            <div width="150px" style="margin-top: 20px">
+                                <button type="button" (click)="addPricePlan()" class="btn btn-primary">
+                                    اضافة تسعيرة
+                                </button>
+                            </div>
+                        </div>
+
+                        <p style="
+                font-size: 14px;
+                font-weight: 600;
+                padding-top: 25px;
+                color: gray;
+              ">
+                            الرجاء ملئ جميع البيانات
+                        </p>
+
+                        <button type="submit" class="btn btn-primary" (click)="updateProduct()" [disabled]="
+                TITLE?.invalid ||
+                MAXprice?.invalid ||
+                MINPRICE?.invalid ||
+                HINT?.invalid ||
+                SKU?.invalid ||
+                CATEGORY?.invalid ||
+                DESCRIPTION?.invalid
+              ">
+                            حفظ التعديل
                         </button>
                         &nbsp;
-                        <a class="btn  text-danger" routerLink="/home/products">رجوع</a>
+                        <a class="btn text-danger" routerLink="/home/products">رجوع</a>
                     </form>
                 </div>
             </div>

@@ -81,7 +81,7 @@
                             <!--sku-->
                             <div class="col-12 col-sm-6 col-md-3">
                                 <div class="col-10">
-                                    <label for="sku" class="form-label">: sku</label>
+                                    <label for="sku" class="form-label"> SKU </label>
                                     <input type="text" class="form-control" id="skutext"
                                         placeholder="ASH0302" name="sku" formControlName="sku"
                                         [class.is-invalid]="SKU?.invalid && SKU?.touched">
@@ -202,12 +202,84 @@
                                 </div>
                             </div>
                         </div>
+                
+                         <!-- Pric-Plan -->
+                         <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
+                            <div class="col-3">
+                                <label for="pricePlan" class="form-label">خطة الاسعار</label>
+                                <select   class="form-select" require
+                                 (change)="PricePlaneType($event)"
+                                    style="border-radius: 0px;">
+                                    <option [value]="1" selected>
+                                        بدون تسعيرة</option>
+                                    <option  [value]="3">
+                                        تسعيرة بالنوع و الكمية 
+                                    </option>
+                                    <option  [value]="2">
+                                        تسعيرة بالنوع فقط 
+                                    </option>
+                                </select>
+                                <!-- <small class="text-danger" *ngIf="CATEGORY?.invalid && CATEGORY?.dirty">إختر 
+                                    خطة الاسعار</small> -->
+                            </div>
+                        </div>
+                     
+                        <div *ngIf="isTypeExist">
+                       <div  *ngIf="isAmountExist"  formArrayName="priceplans"  >
+                       
+                          <div   *ngFor="let pp of pricePlan().controls ;let i=index"  >
+                           
+                         <div class="row"  [formGroupName]="i"> 
+                           <div class="col-3">
+                                الخامة :
+                                <input type="text"  formControlName="type" class="form-control" >
+                            </div>
 
+                            <div   class="col-3">
+                                الكمية :
+                                <input type="text"   formControlName="amount" class="form-control" >
+                            </div>
+                            
+                            <div class="col-3">
+                                السعر:
+                         <input type="text"   formControlName="price" class="form-control" >
+                            </div>
+                            <div class="col-2">
+                                <a (click)="removePricePlan(i)" class="btn btn-danger"style="margin-top: 20px;"> حذف </a>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+
+                          <div  *ngIf="!isAmountExist" formArrayName="priceplans">
+                           
+                              <div  class="row" *ngFor="let pp of pricePlan().controls; let i=index" [formGroupName]="i">
+                               
+                                <div class="col-3">
+                                    الخامة :
+                                    <input type="text" formControlName="type" [value]="pp.value.type" class="form-control" >
+                                </div>
+                              <div class="col-3">
+                                    السعر:
+                                    <input type="text"  [value]="pp.value.price" formControlName="price" class="form-control" >
+                                </div>
+                                <div class="col-2">
+                                    <a (click)="removePricePlan(i)" class="btn btn-danger"style="margin-top: 20px;"> حذف </a>
+                                </div>
+                              </div>
+
+                        </div>
+                    </div>
+                        <div *ngIf="isTypeExist">
+                            <small class="text-danger" *ngIf="PRICEPLAN?.errors?.['required']">يجب إدخال
+                                 جميع البيانات</small>
+                            <div width="150px" style="margin-top: 20px;"><button type="button" (click)="addPricePlan()" class="btn btn-primary">اضافة تسعيرة</button></div>
+                          </div>
                         <p style="font-size: 14px; font-weight: 600; padding-top: 25px; color: gray;">الرجاء ملئ
                             جميع البيانات </p>
 
                         <button type="submit" (click)="addProduct()" class="btn btn-primary"
-                            [disabled]="TITLE?.invalid || MAXprice?.invalid || SKU?.invalid || MINPRICE?.invalid || HINT?.invalid || CATEGORY?.invalid || DESCRIPTION?.invalid">
+                            [disabled]="TITLE?.invalid || PRICEPLAN?.invalid|| MAXprice?.invalid || SKU?.invalid || MINPRICE?.invalid || HINT?.invalid || CATEGORY?.invalid || DESCRIPTION?.invalid">
                             إضافة المنتج
                         </button>
                         &nbsp;

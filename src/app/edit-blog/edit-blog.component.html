@@ -34,7 +34,7 @@
                                 <label for="name" class="form-label">عنوان المقالة</label>
                                 <input type="text" id="titletext" class="form-control" placeholder="العنوان هنا"
                                     formControlName="title" [class.is-invalid]="TITLE?.invalid && TITLE?.touched"
-                                    value={{blog.title}} style="border-radius: 0px;">
+                                     style="border-radius: 0px;">
                                 <div *ngIf="TITLE?.errors && TITLE?.touched">
                                     <small class="text-danger" *ngIf="TITLE?.errors?.['required']">يجب ادخال عنوان
                                         المقالة</small>
@@ -67,7 +67,7 @@
                                 <label for="content" class="form-label">محتوي المقالة</label>
                                 <textarea type="text" class="form-control" id="contenttext"
                                     placeholder="أكتب محتوي مقالتك هنا" formControlName="content"
-                                    [class.is-invalid]="CONTENT?.invalid && CONTENT?.touched" value={{blog.content}}
+                                    [class.is-invalid]="CONTENT?.invalid && CONTENT?.touched"
                                     style="border-radius: 0px; min-height: 100px;">
                                 </textarea>
                                 <div *ngIf="CONTENT?.errors && CONTENT?.touched">
