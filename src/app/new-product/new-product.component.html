@@ -33,11 +33,11 @@
                             <!--category-->
                             <div class="col-12 col-sm-6 col-md-6">
                                 <div class="col-11">
-                                    <label for="category" class="form-label">نوع المنتج</label>
+                                    <label for="category" class="form-label">فئة المنتج</label>
                                     <select formControlName="category" class="form-select" required
                                         [class.is-invalid]="CATEGORY?.invalid && CATEGORY?.dirty"
                                         style="border-radius: 0px;">
-                                        <option value="" selected>إختر النوع</option>
+                                        <option value="" selected>إختر الفئة</option>
                                         <option *ngFor="let cat of categories" [value]="cat.id">
                                             {{cat.name}}
                                         </option>
@@ -206,17 +206,17 @@
                          <!-- Pric-Plan -->
                          <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
                             <div class="col-3">
-                                <label for="pricePlan" class="form-label">خطة الاسعار</label>
+                                <label for="pricePlan" class="form-label">خطة الأسعار</label>
                                 <select   class="form-select" require
                                  (change)="PricePlaneType($event)"
                                     style="border-radius: 0px;">
                                     <option [value]="1" selected>
                                         بدون تسعيرة</option>
                                     <option  [value]="3">
-                                        تسعيرة بالنوع و الكمية 
+                                        تسعيرة الخامة و الكمية 
                                     </option>
                                     <option  [value]="2">
-                                        تسعيرة بالنوع فقط 
+                                        تسعيرة بالخامة فقط 
                                     </option>
                                 </select>
                                 <!-- <small class="text-danger" *ngIf="CATEGORY?.invalid && CATEGORY?.dirty">إختر 
