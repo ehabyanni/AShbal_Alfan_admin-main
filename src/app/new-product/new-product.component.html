@@ -109,13 +109,10 @@
                                 <label for="description" class="form-label">وصف المنتج</label>
                                 <textarea type="text" class="form-control" id="descriptiontext"
                                     placeholder="أترك الوصف هنا" formControlName="description"
-                                    [class.is-invalid]="DESCRIPTION?.invalid && DESCRIPTION?.touched"
+                                    
                                     style="min-height:70px;">
                                          </textarea>
-                                <div *ngIf="DESCRIPTION?.errors && DESCRIPTION?.touched">
-                                    <small class="text-danger" *ngIf="DESCRIPTION?.errors?.['required']">يجب إدخال
-                                        وصف المنتج</small>
-                                </div>
+                        
                             </div>
                         </div>
 
@@ -275,7 +272,7 @@
                             جميع البيانات </p>
 
                         <button type="submit" (click)="addProduct()" class="btn btn-primary"
-                            [disabled]="TITLE?.invalid || PRICEPLAN?.invalid|| MAXprice?.invalid || SKU?.invalid || MINPRICE?.invalid || HINT?.invalid || CATEGORY?.invalid || DESCRIPTION?.invalid">
+                            [disabled]="TITLE?.invalid || PRICEPLAN?.invalid|| MAXprice?.invalid || SKU?.invalid || MINPRICE?.invalid || HINT?.invalid || CATEGORY?.invalid">
                             إضافة المنتج
                         </button>
                         &nbsp;

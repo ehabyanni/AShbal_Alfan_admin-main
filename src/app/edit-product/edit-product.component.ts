@@ -30,7 +30,7 @@ export class EditProductComponent implements OnInit {
     maxPrice: '',
     sku: '',
     hint: ['', Validators.maxLength(30)],
-    description: ['', [Validators.required]],
+    description: '',
     priceplan: ['', [Validators.required]],
     priceplans: this.formbuilder.array([])
 

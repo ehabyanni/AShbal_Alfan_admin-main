@@ -114,10 +114,7 @@
                   " style="min-height: 70px" 
                                     style="height: 100px; border-radius: 0px">
                 </textarea>
-                                <div *ngIf="DESCRIPTION?.errors && DESCRIPTION?.touched">
-                                    <small class="text-danger" *ngIf="DESCRIPTION?.errors?.['required']">يجب إدخال وصف
-                                        المنتج</small>
-                                </div>
+                              
                             </div>
                         </div>
 
@@ -288,8 +285,7 @@
                 MINPRICE?.invalid ||
                 HINT?.invalid ||
                 SKU?.invalid ||
-                CATEGORY?.invalid ||
-                DESCRIPTION?.invalid
+                CATEGORY?.invalid 
               ">
                             حفظ التعديل
                         </button>

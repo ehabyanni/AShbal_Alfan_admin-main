@@ -26,7 +26,7 @@ export class NewProductComponent implements OnInit {
     maxPrice: '',
     sku: '',
     hint: ['' , Validators.maxLength(30)],
-    description: ['', [Validators.required]],
+    description: '',
     priceplans: this.formbuilder.array([])
   });
 
