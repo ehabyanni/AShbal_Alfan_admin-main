@@ -10,7 +10,7 @@ export class CategoriesService {
 
   constructor(private http:HttpClient) { }
 
-  public _url= "http://localhost:5216/api/category";
+  public _url= "http://backend.ashbalalfan.com/api/category";
 
   category:any = [];
 

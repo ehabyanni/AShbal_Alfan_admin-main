@@ -23,7 +23,7 @@
                 <tbody>
                     <tr *ngFor="let item of blog;index as i;">
                         <td>{{item.creationDate|date:'fullDate'}}</td>
-                        <td><img src="https://backend.ashbalalfan.com/Resources/Images/{{item.image}}" width="50px" alt="" srcset=""></td>
+                        <td><img src="http://backend.ashbalalfan.com/Resources/Images/{{item.image}}" width="50px" alt="" srcset=""></td>
                         <!-- <td><img src="assets/images/food.jpeg" width="40px"></td> -->
                         <td>{{item.title}}</td>
                         <td><button type="button" (click)="goToBlogEditor(item.id)" class="btn btn-primary">تعديل</button></td>

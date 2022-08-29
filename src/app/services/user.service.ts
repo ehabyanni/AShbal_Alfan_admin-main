@@ -11,7 +11,7 @@ export class UserService {
  
   constructor(private http:HttpClient) { }
 
-  public _url = "http://localhost:5216/api/User"
+  public _url = "http://backend.ashbalalfan.com/api/User"
   
   user:any = [];
 

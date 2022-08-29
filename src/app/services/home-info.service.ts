@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class HomeInfoService {
 
   constructor(private http:HttpClient) { }
-  public _url:string="http://localhost:5216/api/HomeInfo/admin"
+  public _url:string="http://backend.ashbalalfan.com/api/HomeInfo/admin"
 
   getHomeInfo(){
     return this.http.get(this._url);

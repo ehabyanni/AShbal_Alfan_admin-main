@@ -49,7 +49,7 @@ export class LoginPageComponent implements OnInit {
     if (this.USERNAME != null && this.PASS != null) {
       this.authService.login(this.USERNAME.value,this.PASS.value).subscribe(
         data => {
-        if(data.role=="Admin"){    
+        if(data.role=="admin"){    
             this.tokenStorage.saveToken(data.token);
             this.tokenStorage.saveUser(data.username);
             this.isLoggedIn = true;

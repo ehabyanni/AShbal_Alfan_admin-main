@@ -11,7 +11,7 @@ export class ProductsService {
 
   constructor(private http:HttpClient) { }
 
-  public _url=  "http://localhost:5216/api/product"
+  public _url=  "http://backend.ashbalalfan.com/api/product"
   //public _url = "assets/data/products.json"
   products:any = [];
 
