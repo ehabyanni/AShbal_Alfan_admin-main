@@ -80,7 +80,8 @@ export class EditPriceComponent implements OnInit {
   }
 
 
-  updatePrice1(){
+  
+  updatePrice(){
     this.productservice.EditProductPricePlane(this.productId,this.productDetails).subscribe(
       ()=>{
         alert("تم التحديث");
@@ -88,10 +89,6 @@ export class EditPriceComponent implements OnInit {
         
       }
     );
-  }
-  
-  updatePrice(){
-    console.log(this.productDetails);
   }
   
 }

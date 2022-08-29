@@ -20,7 +20,7 @@ export class BlogsComponent implements OnInit {
     this.itemsBlog.GetAllItemsPagination(this.page,this.pageSize).subscribe(
       data => {
         this.blog = data;
-        if(data.length!=this.pageSize){
+         if(data.length!=this.pageSize){
           this.isAllBlogsExist=true;
         }
       }

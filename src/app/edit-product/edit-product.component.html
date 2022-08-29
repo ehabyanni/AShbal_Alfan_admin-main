@@ -92,7 +92,7 @@
                             </div>
 
                             <!--hint-->
-                            <div class="col-12 col-sm-6 col-md-3">
+                            <!-- <div class="col-12 col-sm-6 col-md-3">
                                 <div class="col-10">
                                     <label for="hint" class="form-label">ملاحظة</label>
                                     <input type="text" class="form-control" id="hinttext"
@@ -101,7 +101,7 @@
                                         style="border-radius: 0px" />
                                     <small class="text-danger" *ngIf="HINT?.invalid">النص اقصاه 30 حرف</small>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                         <!--3rd row - description-->
@@ -209,8 +209,8 @@
                                 <select formControlName="priceplan" class="form-select" require (change)="PricePlaneType($event)"
                                     style="border-radius: 0px">
                                     <option [value]="1" selected>بدون تسعيرة</option>
-                                    <option [value]="3">تسعيرة بالنوع و الكمية</option>
-                                    <option [value]="2">تسعيرة بالنوع فقط</option>
+                                    <option [value]="3">تسعيرة بالخامة و الكمية</option>
+                                    <option [value]="2">تسعيرة بالخامة فقط</option>
                                 </select>
                                 <!-- <small class="text-danger" *ngIf="CATEGORY?.invalid && CATEGORY?.dirty">إختر 
             خطة الاسعار</small> -->

@@ -31,13 +31,13 @@
                             <!--title-->
 
                             <div class="col-5">
-                                <label for="name" class="form-label">عنوان المقالة</label>
+                                <label for="name" class="form-label">عنوان المدونة</label>
                                 <input type="text" id="titletext" class="form-control" placeholder="العنوان هنا"
                                     formControlName="title" [class.is-invalid]="TITLE?.invalid && TITLE?.touched"
                                      style="border-radius: 0px;">
                                 <div *ngIf="TITLE?.errors && TITLE?.touched">
                                     <small class="text-danger" *ngIf="TITLE?.errors?.['required']">يجب ادخال عنوان
-                                        المقالة</small>
+                                        المدونة</small>
                                     <small class="text-danger" *ngIf="TITLE?.errors?.['minlength']">يجب ان يحتوي
                                         العنوان اكثر من 10 حروف</small>
                                 </div>
@@ -46,7 +46,7 @@
                             <div class="row col-6">
 
                                 <div class="col-8">
-                                    <label for="name" class="form-label">إضافة صورة للمقالة</label>
+                                    <label for="name" class="form-label">تعديل صورة المدونة</label>
                                     <input class="form-control" style="border-radius: 0px;" type="file" id="formFile"
                                         #file (change)="uploadFile(file.files)">
                                     <!-- <input type="file" style=" padding-top:3px" class="btn btn-succes"  #file placeholder="اختر الصورة" (change)="uploadFile(file.files)" /> -->
@@ -64,7 +64,7 @@
 
                         <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
                             <div class="col-11">
-                                <label for="content" class="form-label">محتوي المقالة</label>
+                                <label for="content" class="form-label">محتوي المدونة</label>
                                 <textarea type="text" class="form-control" id="contenttext"
                                     placeholder="أكتب محتوي مقالتك هنا" formControlName="content"
                                     [class.is-invalid]="CONTENT?.invalid && CONTENT?.touched"
@@ -74,7 +74,7 @@
                                     <small class="text-danger" *ngIf="CONTENT?.errors?.['required']">يجب إدخال
                                         نص المفالة</small>
                                     <small class="text-danger" *ngIf="CONTENT?.errors?.['minlength']">يجب أن
-                                        يحتوي نص المقالة اكثر من 100 حرف</small>
+                                        يحتوي نص المدونة اكثر من 100 حرف</small>
                                 </div>
                             </div>
                         </div>
