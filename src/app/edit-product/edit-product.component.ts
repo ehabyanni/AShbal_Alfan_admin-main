@@ -24,13 +24,13 @@ export class EditProductComponent implements OnInit {
   ) { }
 
   productForm = this.formbuilder.group({
-    title: ['', [Validators.required, Validators.minLength(5)]],
+    title: ['', [Validators.required]],
     category: ['', Validators.required],
-    minPrice: ['', [Validators.required]],
-    maxPrice: ['', [Validators.required]],
-    sku: ['', [Validators.required]],
+    minPrice: '',
+    maxPrice: '',
+    sku: '',
     hint: ['', Validators.maxLength(30)],
-    description: ['', [Validators.required, Validators.minLength(50)]],
+    description: ['', [Validators.required]],
     priceplan: ['', [Validators.required]],
     priceplans: this.formbuilder.array([])
 
@@ -146,8 +146,8 @@ export class EditProductComponent implements OnInit {
         creationDate: new Date(),
         category_Id: this.CATEGORY?.value,
         category_Name: this.categories.find(c=>c.id==this.CATEGORY?.value)?.name,
-        minPrice: this.MINPRICE?.value,
-        maxPrice: this.MAXprice?.value,
+        minPrice: (this.MINPRICE?.value)?this.MINPRICE?.value:0,
+        maxPrice: (this.MAXprice?.value)?this.MAXprice?.value:0,
         hint: this.HINT?.value,
         isTypeExist:this.isTypeExist,
         isAmountExist:this.isAmountExist,
@@ -206,7 +206,7 @@ export class EditProductComponent implements OnInit {
     let fileToUpload = <File>files[0];
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
-    this.http.post('http://backend.ashbalalfan.com/api/Product/Upload', formData, {reportProgress: true, observe: 'events'})
+    this.http.post('http://http://backend.ashbalalfan.com/api/Product/UploadImage', formData, {reportProgress: true, observe: 'events'})
       .subscribe({
         next: (event) => {
         if (event.type === HttpEventType.UploadProgress)

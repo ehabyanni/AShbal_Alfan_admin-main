@@ -58,12 +58,15 @@
                         <td>{{item.category_Name}}</td>
                         <td>{{item.title}}</td>
                         <td>
-                            <h6 style="color: rgb(84, 209, 84); display: inline; font-weight: 600;">{{item.minPrice}}
+                            <div *ngIf="item.minPrice">
+                            <h6  style="color: rgb(84, 209, 84); display: inline; font-weight: 600;">{{item.minPrice}}
                             </h6> ر.س
+                        </div>
                         </td>
                         <td>
+                            <div  *ngIf="item.maxPrice" >
                             <h6 style="color: rgb(84, 209, 84); display: inline; font-weight: 600;">{{item.maxPrice}}
-                            </h6> ر.س
+                            </h6> ر.س</div>
                         </td>
                         <td>
                             <button type="button" (click)="goToProductEditor(item.id)"

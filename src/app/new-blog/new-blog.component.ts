@@ -16,8 +16,8 @@ export class NewBlogComponent implements OnInit {
   constructor(private formbuilder:FormBuilder,private itemsBlog:BlogService,private router:Router , private http:HttpClient) { }
 
   blogForm = this.formbuilder.group({
-    title: ['', [Validators.required, Validators.minLength(10)]],
-    content: ['', [Validators.required, Validators.minLength(100)]]
+    title: ['', [Validators.required]],
+    content: ['', [Validators.required]]
   })
 
   //title property
@@ -56,7 +56,6 @@ export class NewBlogComponent implements OnInit {
     console.log(this.selectedFile);
   }
 
-  public urlFile = "http://localhost:4200/assets/images/";
 
   progress!: number;
   message!: string;
@@ -70,7 +69,7 @@ export class NewBlogComponent implements OnInit {
     let fileToUpload = <File>files[0];
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
-    this.http.post('http://backend.ashbalalfan.com/api/Product/Upload', formData, {reportProgress: true, observe: 'events'})
+    this.http.post('http://backend.ashbalalfan.com/api/Product/UploadImage', formData, {reportProgress: true, observe: 'events'})
       .subscribe({
         next: (event) => {
         if (event.type === HttpEventType.UploadProgress)

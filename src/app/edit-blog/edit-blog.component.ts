@@ -19,8 +19,8 @@ export class EditBlogComponent implements OnInit {
       ) { }
 
   blogForm = this.formbuilder.group({
-    title: ['', [Validators.required, Validators.minLength(10)]],
-    content: ['', [Validators.required, Validators.minLength(100)]]
+    title: ['', [Validators.required]],
+    content: ['', [Validators.required]]
   })
 
   //title property
@@ -81,7 +81,7 @@ export class EditBlogComponent implements OnInit {
     let fileToUpload = <File>files[0];
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
-    this.http.post('http://backend.ashbalalfan.com/api/Product/Upload', formData, {reportProgress: true, observe: 'events'})
+    this.http.post('http://backend.ashbalalfan.com/api/Product/UploadImage', formData, {reportProgress: true, observe: 'events'})
       .subscribe({
         next: (event) => {
         if (event.type === HttpEventType.UploadProgress)
