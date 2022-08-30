@@ -5,10 +5,14 @@
 .login-container {
     margin-top: 5%;
     margin-bottom: 5%;
+    //box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .login-form-1 {
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    //border-radius: 10px;
+    height: 391px;
 }
 
 .login-form-1 h3 {
@@ -16,17 +20,17 @@
     color: #333;
 }
 
-.login-form-2 {
-    padding: 2%;
-    // background:  #2e803e;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+// .login-form-2 {
+//     //padding: 2%;
+//     // background:  #2e803e;
+//     //box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 
-}
+// }
 
-.login-form-2 h3 {
-    text-align: center;
-    color: #fff;
-}
+// .login-form-2 h3 {
+//     text-align: center;
+//     color: #fff;
+// }
 
 .login-container form {
     padding: 10%;
