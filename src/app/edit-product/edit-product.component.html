@@ -133,7 +133,7 @@
                                 <div class="col-12" style="padding-top: 10px">
                                     <!-- <img src="assets/images/food.jpeg" width="100px" height="100px"
                                         style="display: block; margin:auto;"> -->
-                                    <img src="http://backend.ashbalalfan.com/Resources/Images/{{
+                                    <img *ngIf="fileName1 || product.image1" src="http://backend.ashbalalfan.com/Resources/Images/{{
                       fileName1 ? fileName1.fileName : product.image1
                     }}" width="100px" height="100px" style="display: block; margin: auto" alt="" srcset="" />
                                 </div>
@@ -152,7 +152,7 @@
                                 <div class="col-12" style="padding-top: 10px">
                                     <!-- <img src="assets/images/food.jpeg" width="100px" height="100px"
                                         style="display: block; margin:auto;"> -->
-                                    <img src="http://backend.ashbalalfan.com/Resources/Images/{{
+                                    <img  *ngIf="fileName2 || product.image2" src="http://backend.ashbalalfan.com/Resources/Images/{{
                       fileName2 ? fileName2.fileName : product.image2
                     }}" width="100px" height="100px" style="display: block; margin: auto" alt="" srcset="" />
                                 </div>
@@ -171,7 +171,7 @@
                                 <div class="col-12" style="padding-top: 10px">
                                     <!-- <img src="assets/images/food.jpeg" width="100px" height="100px"
                                         style="display: block; margin:auto;"> -->
-                                    <img src="http://backend.ashbalalfan.com/Resources/Images/{{
+                                    <img *ngIf="fileName3 || product.image3" src="http://backend.ashbalalfan.com/Resources/Images/{{
                       fileName3 ? fileName3.fileName : product.image3
                     }}" width="100px" height="100px" style="display: block; margin: auto" alt="" srcset="" />
                                 </div>
@@ -190,7 +190,7 @@
                                 <div class="col-12" style="padding-top: 10px">
                                     <!-- <img src="assets/images/food.jpeg" width="100px" height="100px"
                                         style="display: block; margin:auto;"> -->
-                                    <img src="http://backend.ashbalalfan.com/Resources/Images/{{
+                                    <img *ngIf="fileName4 || product.image4" src="http://backend.ashbalalfan.com/Resources/Images/{{
                       fileName4 ? fileName4.fileName : product.image4
                     }}" width="100px" height="100px" style="display: block; margin: auto" alt="" srcset="" />
                                 </div>

@@ -206,7 +206,7 @@ export class EditProductComponent implements OnInit {
     let fileToUpload = <File>files[0];
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
-    this.http.post('http://http://backend.ashbalalfan.com/api/Product/UploadImage', formData, {reportProgress: true, observe: 'events'})
+    this.http.post('http://backend.ashbalalfan.com/api/Product/UploadImage', formData, {reportProgress: true, observe: 'events'})
       .subscribe({
         next: (event) => {
         if (event.type === HttpEventType.UploadProgress)
