@@ -19,7 +19,7 @@ export class ProductsComponent implements OnInit {
   products: IProduct[] = [];
   categories: ICategory[] = [];
 
-  sortValues: string[] = ["أدني سعر تصاعدي", "أدني سعر تنازلي", "أقصدي سعر تصاعدي", "أقصي سعر تنازلي", "حسب الاسم", "حسب الفئة"];
+  sortValues: string[] = ["أدني سعر تصاعدي", "أدني سعر تنازلي", "أقصي سعر تصاعدي", "أقصي سعر تنازلي", "حسب الاسم", "حسب الفئة"];
   showProducts: IProduct[] = [];
 
 
